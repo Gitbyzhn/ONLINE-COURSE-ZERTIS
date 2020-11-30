@@ -1,0 +1,182 @@
+﻿
+@using OnlineCourseZertis.Models
+@model Quiz_A
+@{ 
+    Layout = null;
+
+    var setLang = GetUser.Quiz(ViewBag.language);
+}
+
+
+
+<div class="md-content" id="md-content">
+
+    @if (Model != null)
+    {
+        <div class="modal-header">
+
+            <h4 style="font-weight: bold" class="modal-title">@Model.Quiz_Title</h4>
+
+
+        </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="radio_result" value="@Model.User_Answer" />
+                        @{
+
+
+
+                            var answerA = "";
+                            var answerB = "";
+                            var answerC = "";
+                            var answerE = "";
+                            var answerD = "";
+                            var disableArea = "disabled";
+
+
+
+                            switch (Model.User_Answer)
+                            {
+                                case 1:
+                                    answerA = "checked";
+                                    break;
+                                case 2:
+                                    answerB = "checked";
+                                    break;
+                                case 3:
+                                    answerC = "checked";
+                                    break;
+                                case 4:
+                                    answerD = "checked";
+                                    break;
+                                case 5:
+                                    answerE = "checked";
+                                    disableArea = "";
+                                    break;
+
+                            }
+
+
+
+
+                        }
+
+
+
+
+                        <div class="radio">
+
+                            <input type="radio" @answerA name="optionsRadios" id="radioA" onclick="radio_qa(1)">
+
+
+
+
+
+
+                            <label style="font-weight:600" for="radioA">
+                                @Model.A
+                            </label>
+                        </div>
+
+
+                        <div class="radio">
+
+
+                            <input type="radio" @answerB name="optionsRadios" id="radioB" onclick="radio_qa(2)">
+
+                            <label style="font-weight:600" for="radioB">
+                                @Model.B
+
+                            </label>
+                        </div>
+
+
+
+                        <div class="radio">
+
+                            <input type="radio" @answerC name="optionsRadios" id="radioC" onclick="radio_qa(3)"/>
+
+                            <label style="font-weight:600" for="radioC">
+                                @Model.C
+                            </label>
+                        </div>
+
+                        @if (Model.D != null)
+                        {
+                            <div class="radio">
+
+
+                                <input type="radio" @answerD name="optionsRadios" id="radioD" onclick="radio_qa(4)" />
+
+
+                                <label style="font-weight:600" for="radioD">
+
+                                    @Model.D
+
+                                </label>
+
+                            </div>
+
+                        }
+                    
+
+                        <div class="radio">
+
+
+                            <input type="radio" @answerE name="optionsRadios" id="radioE" onclick="radio_qa(5)"/>
+
+
+                            <label style="font-weight:600" for="radioE">
+
+                                @Model.E
+
+                            </label>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <textarea maxlength="180" id="AnswerTextArea" class="form-control" @disableArea rows="3">@Model.User_AnswerOther</textarea>
+
+                        </div>
+
+
+                        <div id="Quiz_MsgError" class="hidden">
+
+
+                        </div>
+
+                        <div class="prevnext_btn">
+
+                            @if (Model.prev == true)
+                            {
+                                 <a href="#" class="previous" style="float:left" onclick="prev_quiz(@Model.QId)"><span>← @setLang.Prev</span></a>
+                            }
+
+
+                            <a href="#" class="next" style="float:right" id="next_quiz_a" onclick="quiz(@Model.QId,@Model.Q_content_Id,0)"><span>@setLang.Next →</span></a>
+
+                         
+
+                        </div>
+
+                     
+
+
+                    </div>
+
+
+
+                           
+
+                          
+
+              }
+
+
+</div>
+
+
+
+
+

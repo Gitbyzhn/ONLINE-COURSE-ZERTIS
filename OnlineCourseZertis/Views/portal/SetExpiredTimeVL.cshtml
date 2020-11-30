@@ -1,0 +1,102 @@
+﻿@model OnlineCourseZertis.Models.ExpiredTimeVL
+@{
+    ViewBag.Title = "SetExpiredTimeVL";
+    Layout = "~/Views/Shared/_Layout_portal.cshtml";
+}
+
+
+
+
+
+<section class="content-header">
+    <h1>
+        Установить ограничения по времени
+    </h1>
+
+</section>
+
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+
+        <div class="col-xs-12 col-md-12 ">
+
+            <!-- Box Comment -->
+            <div class="box box-widget SetCTVL">
+
+
+                <form method="post" enctype="multipart/form-data">
+                    <div class="box-body">
+               
+
+
+                        <div class="col-xs-12 col-md-12">
+
+                            <input type="hidden" value="@Model.Id" name="Id" />
+
+                            @{
+                                var enableCheck = "";
+                                if (Model.Enable)
+                                {
+                                    enableCheck = "checked";
+                                }
+                            }
+
+                            <div class="checkbox checkPublish">
+                                <input data-val="true" data-val-required="Требуется поле Запомнить меня." id="publish" @enableCheck name="Enable" type="checkbox" value="true">
+                                <label for="publish">Опубликовать</label>
+                            </div>
+
+                            <div class="form-group">
+                               
+                                <input type="number" min="0"  class="form-control" name="DefaultVLYear" placeholder="Год" value="@Model.DefaultVLYear" required> <input type="number" min="0"  class="form-control" name="DefaultVLMonth" placeholder="Месяц" value="@Model.DefaultVLMonth" required> <input type="number" min="1" class="form-control" name="DefaultVLDay" value="@Model.DefaultVLDay" placeholder="День" required>
+                            
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="box-footer">
+
+
+                        <button type="submit" onclick="bass()" class="btn bg-olive margin"><span class="fa fa-plus"></span> Создать</button>
+
+
+                    </div>
+
+                </form>
+                <!-- /.box-footer -->
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<input type="hidden" id="AddVideoMsg" value="@ViewBag.AddVideoMsg" />
+
+<script>
+
+    function Message() {
+
+        var AddVideoMsg = $("#AddVideoMsg").val();
+        if (AddVideoMsg == "success") {
+            toastr["success"]("Время завершения обучения установлено !")
+        }
+        else if (AddVideoMsg == "error") {
+            toastr["warning"]("При обработка произошла ошибка")
+        }
+
+    }
+
+    setTimeout(Message, 1000);
+
+</script>
+

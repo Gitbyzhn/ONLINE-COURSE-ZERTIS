@@ -1,0 +1,2005 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище DB_Zertis_OCsModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExpiredTimeVL">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DefaultVLYear" Type="int" Nullable="false" />
+          <Property Name="DefaultVLMonth" Type="int" Nullable="false" />
+          <Property Name="DefaultVLDay" Type="int" Nullable="false" />
+          <Property Name="Enable" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EyeV">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="VideoXId" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Isbranni">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="VideoLXId" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JVLO">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="56" Nullable="false" />
+          <Property Name="OV" Type="int" Nullable="false" />
+          <Property Name="X" Type="float" Nullable="false" />
+          <Property Name="TBB" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LessonVideoTime">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="LessonXId" Type="float" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LikeV">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="VideoXId" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Modul">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Image" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Enable" Type="bit" />
+          <Property Name="XId" Type="int" />
+        </EntityType>
+        <EntityType Name="Modul_userLevel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModuleId" Type="int" Nullable="false" />
+          <Property Name="LevelId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Modules_Property">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MId" Type="int" Nullable="false" />
+          <Property Name="Titile" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="lang" Type="nchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="Premium">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LevelId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Image" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Certificatre" Type="bit" Nullable="false" />
+          <Property Name="Price" Type="int" />
+        </EntityType>
+        <EntityType Name="Premium_OrderId">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Quiz">
+          <Key>
+            <PropertyRef Name="QId" />
+          </Key>
+          <Property Name="QId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Quiz_A_User_Answer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="QuizId" Type="int" Nullable="false" />
+          <Property Name="Answer" Type="int" Nullable="false" />
+          <Property Name="AnswerOther" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Quiz_B_User_Answer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="QuizId" Type="int" Nullable="false" />
+          <Property Name="Answer" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Quiz_C_User_Answer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="QuizId" Type="int" Nullable="false" />
+          <Property Name="Answer" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Quiz_Content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="language" Type="nchar" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Quiz_Option">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuizId" Type="int" Nullable="false" />
+          <Property Name="A" Type="nvarchar" MaxLength="200" />
+          <Property Name="B" Type="nvarchar" MaxLength="200" />
+          <Property Name="C" Type="nvarchar" MaxLength="200" />
+          <Property Name="D" Type="nvarchar" MaxLength="200" />
+          <Property Name="E" Type="nvarchar" MaxLength="200" />
+          <Property Name="lang" Type="nchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Question" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="A" Type="nvarchar" MaxLength="200" />
+          <Property Name="B" Type="nvarchar" MaxLength="200" />
+          <Property Name="C" Type="nvarchar" MaxLength="200" />
+          <Property Name="D" Type="nvarchar" MaxLength="200" />
+          <Property Name="E" Type="nvarchar" MaxLength="200" />
+          <Property Name="F" Type="nvarchar" MaxLength="200" />
+          <Property Name="G" Type="nvarchar" MaxLength="200" />
+          <Property Name="Answer" Type="int" />
+          <Property Name="LessonId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User_Premium">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="PremiumId" Type="int" Nullable="false" />
+          <Property Name="buy" Type="bit" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="User_Premium_Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_PremiumId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="SureName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="56" Nullable="false" />
+          <Property Name="LevelId" Type="int" />
+          <Property Name="RegTime" Type="datetime" />
+          <Property Name="ExpiredVLDate" Type="date" />
+          <Property Name="Expired" Type="bit" />
+        </EntityType>
+        <EntityType Name="Users_Certificates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PublicCert" Type="bit" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CertificateURL" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ValitOS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="VdeoLXId" Type="float" Nullable="false" />
+          <Property Name="KB" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VideoL">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="XId" Type="float" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="ModulId" Type="int" Nullable="false" />
+          <Property Name="Link" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ShortT" Type="nvarchar" MaxLength="50" />
+          <Property Name="Iconimg" Type="nvarchar(max)" />
+          <Property Name="Iconimg2" Type="nvarchar(max)" />
+          <Property Name="language" Type="nchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="VideoLEM">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VideoXId" Type="float" Nullable="false" />
+          <Property Name="Likes" Type="int" Nullable="false" />
+          <Property Name="Eye" Type="int" Nullable="false" />
+          <Property Name="minute" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VideoXL">
+          <Key>
+            <PropertyRef Name="XId" />
+          </Key>
+          <Property Name="XId" Type="float" Nullable="false" />
+          <Property Name="MId" Type="int" Nullable="false" />
+          <Property Name="Enable" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EyeV_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="EyeV" Type="Self.EyeV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EyeV">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Isbranni_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="Isbranni" Type="Self.Isbranni" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Isbranni">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LessonVideoTime_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="LessonVideoTime" Type="Self.LessonVideoTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LessonVideoTime">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeV_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="LikeV" Type="Self.LikeV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LikeV">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Modul_userLevel_Modul">
+          <End Role="Modul" Type="Self.Modul" Multiplicity="1" />
+          <End Role="Modul_userLevel" Type="Self.Modul_userLevel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modul">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Modul_userLevel">
+              <PropertyRef Name="ModuleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Modules_Property_Modul">
+          <End Role="Modul" Type="Self.Modul" Multiplicity="1" />
+          <End Role="Modules_Property" Type="Self.Modules_Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modul">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Modules_Property">
+              <PropertyRef Name="MId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quiz_A_User_Answer_Quiz_Content">
+          <End Role="Quiz_Content" Type="Self.Quiz_Content" Multiplicity="1" />
+          <End Role="Quiz_A_User_Answer" Type="Self.Quiz_A_User_Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quiz_Content">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Quiz_A_User_Answer">
+              <PropertyRef Name="QuizId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quiz_A_User_Answer_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="Quiz_A_User_Answer" Type="Self.Quiz_A_User_Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Quiz_A_User_Answer">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quiz_B_User_Answer_Quiz_Content">
+          <End Role="Quiz_Content" Type="Self.Quiz_Content" Multiplicity="1" />
+          <End Role="Quiz_B_User_Answer" Type="Self.Quiz_B_User_Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quiz_Content">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Quiz_B_User_Answer">
+              <PropertyRef Name="QuizId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quiz_B_User_Answer_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="Quiz_B_User_Answer" Type="Self.Quiz_B_User_Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Quiz_B_User_Answer">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quiz_C_User_Answer_Quiz_Content">
+          <End Role="Quiz_Content" Type="Self.Quiz_Content" Multiplicity="1" />
+          <End Role="Quiz_C_User_Answer" Type="Self.Quiz_C_User_Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quiz_Content">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Quiz_C_User_Answer">
+              <PropertyRef Name="QuizId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quiz_Content_Quiz">
+          <End Role="Quiz" Type="Self.Quiz" Multiplicity="1" />
+          <End Role="Quiz_Content" Type="Self.Quiz_Content" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quiz">
+              <PropertyRef Name="QId" />
+            </Principal>
+            <Dependent Role="Quiz_Content">
+              <PropertyRef Name="QId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quiz_Option_Quiz_Content">
+          <End Role="Quiz_Content" Type="Self.Quiz_Content" Multiplicity="1" />
+          <End Role="Quiz_Option" Type="Self.Quiz_Option" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quiz_Content">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Quiz_Option">
+              <PropertyRef Name="QuizId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Test_VideoL">
+          <End Role="VideoL" Type="Self.VideoL" Multiplicity="1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VideoL">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="LessonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_AnswerOther_QuizA_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="Quiz_C_User_Answer" Type="Self.Quiz_C_User_Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Quiz_C_User_Answer">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Premium_Premium">
+          <End Role="Premium" Type="Self.Premium" Multiplicity="1" />
+          <End Role="User_Premium" Type="Self.User_Premium" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Premium">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_Premium">
+              <PropertyRef Name="PremiumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Premium_Status_User_Premium">
+          <End Role="User_Premium" Type="Self.User_Premium" Multiplicity="1" />
+          <End Role="User_Premium_Status" Type="Self.User_Premium_Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_Premium">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_Premium_Status">
+              <PropertyRef Name="User_PremiumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Premium_User_Premium">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="User_Premium" Type="Self.User_Premium" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_Premium">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Certificates_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="Users_Certificates" Type="Self.Users_Certificates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users_Certificates">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ValitOS_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="ValitOS" Type="Self.ValitOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ValitOS">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VideoL_Modul">
+          <End Role="Modul" Type="Self.Modul" Multiplicity="1" />
+          <End Role="VideoL" Type="Self.VideoL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modul">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VideoL">
+              <PropertyRef Name="ModulId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VideoL_VideoXL">
+          <End Role="VideoXL" Type="Self.VideoXL" Multiplicity="1" />
+          <End Role="VideoL" Type="Self.VideoL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VideoXL">
+              <PropertyRef Name="XId" />
+            </Principal>
+            <Dependent Role="VideoL">
+              <PropertyRef Name="XId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VideoLEM_VideoXL">
+          <End Role="VideoXL" Type="Self.VideoXL" Multiplicity="1" />
+          <End Role="VideoLEM" Type="Self.VideoLEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VideoXL">
+              <PropertyRef Name="XId" />
+            </Principal>
+            <Dependent Role="VideoLEM">
+              <PropertyRef Name="VideoXId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VideoXL_Modul">
+          <End Role="Modul" Type="Self.Modul" Multiplicity="1" />
+          <End Role="VideoXL" Type="Self.VideoXL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modul">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VideoXL">
+              <PropertyRef Name="MId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище DB_Zertis_OCsModelContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExpiredTimeVL" EntityType="Self.ExpiredTimeVL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EyeV" EntityType="Self.EyeV" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Isbranni" EntityType="Self.Isbranni" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JVLO" EntityType="Self.JVLO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LessonVideoTime" EntityType="Self.LessonVideoTime" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LikeV" EntityType="Self.LikeV" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modul" EntityType="Self.Modul" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modul_userLevel" EntityType="Self.Modul_userLevel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modules_Property" EntityType="Self.Modules_Property" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Premium" EntityType="Self.Premium" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Premium_OrderId" EntityType="Self.Premium_OrderId" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Quiz" EntityType="Self.Quiz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Quiz_A_User_Answer" EntityType="Self.Quiz_A_User_Answer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Quiz_B_User_Answer" EntityType="Self.Quiz_B_User_Answer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Quiz_C_User_Answer" EntityType="Self.Quiz_C_User_Answer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Quiz_Content" EntityType="Self.Quiz_Content" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Quiz_Option" EntityType="Self.Quiz_Option" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Test" EntityType="Self.Test" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Premium" EntityType="Self.User_Premium" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Premium_Status" EntityType="Self.User_Premium_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users_Certificates" EntityType="Self.Users_Certificates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ValitOS" EntityType="Self.ValitOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VideoL" EntityType="Self.VideoL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VideoLEM" EntityType="Self.VideoLEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VideoXL" EntityType="Self.VideoXL" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EyeV_UserInfo" Association="Self.FK_EyeV_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="EyeV" EntitySet="EyeV" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Isbranni_UserInfo" Association="Self.FK_Isbranni_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="Isbranni" EntitySet="Isbranni" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LessonVideoTime_UserInfo" Association="Self.FK_LessonVideoTime_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="LessonVideoTime" EntitySet="LessonVideoTime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeV_UserInfo" Association="Self.FK_LikeV_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="LikeV" EntitySet="LikeV" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Modul_userLevel_Modul" Association="Self.FK_Modul_userLevel_Modul">
+            <End Role="Modul" EntitySet="Modul" />
+            <End Role="Modul_userLevel" EntitySet="Modul_userLevel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Modules_Property_Modul" Association="Self.FK_Modules_Property_Modul">
+            <End Role="Modul" EntitySet="Modul" />
+            <End Role="Modules_Property" EntitySet="Modules_Property" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quiz_A_User_Answer_Quiz_Content" Association="Self.FK_Quiz_A_User_Answer_Quiz_Content">
+            <End Role="Quiz_Content" EntitySet="Quiz_Content" />
+            <End Role="Quiz_A_User_Answer" EntitySet="Quiz_A_User_Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quiz_A_User_Answer_UserInfo" Association="Self.FK_Quiz_A_User_Answer_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="Quiz_A_User_Answer" EntitySet="Quiz_A_User_Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quiz_B_User_Answer_Quiz_Content" Association="Self.FK_Quiz_B_User_Answer_Quiz_Content">
+            <End Role="Quiz_Content" EntitySet="Quiz_Content" />
+            <End Role="Quiz_B_User_Answer" EntitySet="Quiz_B_User_Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quiz_B_User_Answer_UserInfo" Association="Self.FK_Quiz_B_User_Answer_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="Quiz_B_User_Answer" EntitySet="Quiz_B_User_Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quiz_C_User_Answer_Quiz_Content" Association="Self.FK_Quiz_C_User_Answer_Quiz_Content">
+            <End Role="Quiz_Content" EntitySet="Quiz_Content" />
+            <End Role="Quiz_C_User_Answer" EntitySet="Quiz_C_User_Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quiz_Content_Quiz" Association="Self.FK_Quiz_Content_Quiz">
+            <End Role="Quiz" EntitySet="Quiz" />
+            <End Role="Quiz_Content" EntitySet="Quiz_Content" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quiz_Option_Quiz_Content" Association="Self.FK_Quiz_Option_Quiz_Content">
+            <End Role="Quiz_Content" EntitySet="Quiz_Content" />
+            <End Role="Quiz_Option" EntitySet="Quiz_Option" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_VideoL" Association="Self.FK_Test_VideoL">
+            <End Role="VideoL" EntitySet="VideoL" />
+            <End Role="Test" EntitySet="Test" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_AnswerOther_QuizA_UserInfo" Association="Self.FK_User_AnswerOther_QuizA_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="Quiz_C_User_Answer" EntitySet="Quiz_C_User_Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Premium_Premium" Association="Self.FK_User_Premium_Premium">
+            <End Role="Premium" EntitySet="Premium" />
+            <End Role="User_Premium" EntitySet="User_Premium" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Premium_Status_User_Premium" Association="Self.FK_User_Premium_Status_User_Premium">
+            <End Role="User_Premium" EntitySet="User_Premium" />
+            <End Role="User_Premium_Status" EntitySet="User_Premium_Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Premium_User_Premium" Association="Self.FK_User_Premium_User_Premium">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="User_Premium" EntitySet="User_Premium" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Certificates_UserInfo" Association="Self.FK_Users_Certificates_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="Users_Certificates" EntitySet="Users_Certificates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ValitOS_UserInfo" Association="Self.FK_ValitOS_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="ValitOS" EntitySet="ValitOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VideoL_Modul" Association="Self.FK_VideoL_Modul">
+            <End Role="Modul" EntitySet="Modul" />
+            <End Role="VideoL" EntitySet="VideoL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VideoL_VideoXL" Association="Self.FK_VideoL_VideoXL">
+            <End Role="VideoXL" EntitySet="VideoXL" />
+            <End Role="VideoL" EntitySet="VideoL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VideoLEM_VideoXL" Association="Self.FK_VideoLEM_VideoXL">
+            <End Role="VideoXL" EntitySet="VideoXL" />
+            <End Role="VideoLEM" EntitySet="VideoLEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VideoXL_Modul" Association="Self.FK_VideoXL_Modul">
+            <End Role="Modul" EntitySet="Modul" />
+            <End Role="VideoXL" EntitySet="VideoXL" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_Zertis_OCsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="ExpiredTimeVL">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DefaultVLYear" Type="Int32" Nullable="false" />
+          <Property Name="DefaultVLMonth" Type="Int32" Nullable="false" />
+          <Property Name="DefaultVLDay" Type="Int32" Nullable="false" />
+          <Property Name="Enable" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EyeV">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="VideoXId" Type="Double" Nullable="false" />
+          <NavigationProperty Name="UserInfo" Relationship="Self.FK_EyeV_UserInfo" FromRole="EyeV" ToRole="UserInfo" />
+        </EntityType>
+        <EntityType Name="Isbranni">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="VideoLXId" Type="Double" Nullable="false" />
+          <NavigationProperty Name="UserInfo" Relationship="Self.FK_Isbranni_UserInfo" FromRole="Isbranni" ToRole="UserInfo" />
+        </EntityType>
+        <EntityType Name="JVLO">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="56" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OV" Type="Int32" Nullable="false" />
+          <Property Name="X" Type="Double" Nullable="false" />
+          <Property Name="TBB" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LessonVideoTime">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="LessonXId" Type="Double" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="UserInfo" Relationship="Self.FK_LessonVideoTime_UserInfo" FromRole="LessonVideoTime" ToRole="UserInfo" />
+        </EntityType>
+        <EntityType Name="LikeV">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="VideoXId" Type="Double" Nullable="false" />
+          <NavigationProperty Name="UserInfo" Relationship="Self.FK_LikeV_UserInfo" FromRole="LikeV" ToRole="UserInfo" />
+        </EntityType>
+        <EntityType Name="Modul">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Enable" Type="Boolean" />
+          <Property Name="XId" Type="Int32" />
+          <NavigationProperty Name="Modul_userLevel" Relationship="Self.FK_Modul_userLevel_Modul" FromRole="Modul" ToRole="Modul_userLevel" />
+          <NavigationProperty Name="Modules_Property" Relationship="Self.FK_Modules_Property_Modul" FromRole="Modul" ToRole="Modules_Property" />
+          <NavigationProperty Name="VideoLs" Relationship="Self.FK_VideoL_Modul" FromRole="Modul" ToRole="VideoL" />
+          <NavigationProperty Name="VideoXLs" Relationship="Self.FK_VideoXL_Modul" FromRole="Modul" ToRole="VideoXL" />
+        </EntityType>
+        <EntityType Name="Modul_userLevel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModuleId" Type="Int32" Nullable="false" />
+          <Property Name="LevelId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Modul" Relationship="Self.FK_Modul_userLevel_Modul" FromRole="Modul_userLevel" ToRole="Modul" />
+        </EntityType>
+        <EntityType Name="Modules_Property">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MId" Type="Int32" Nullable="false" />
+          <Property Name="Titile" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lang" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Modul" Relationship="Self.FK_Modules_Property_Modul" FromRole="Modules_Property" ToRole="Modul" />
+        </EntityType>
+        <EntityType Name="Premium">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LevelId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Certificatre" Type="Boolean" Nullable="false" />
+          <Property Name="Price" Type="Int32" />
+          <NavigationProperty Name="User_Premium" Relationship="Self.FK_User_Premium_Premium" FromRole="Premium" ToRole="User_Premium" />
+        </EntityType>
+        <EntityType Name="Premium_OrderId">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Quiz">
+          <Key>
+            <PropertyRef Name="QId" />
+          </Key>
+          <Property Name="QId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Quiz_Content" Relationship="DB_Zertis_OCsModel.FK_Quiz_Content_Quiz" FromRole="Quiz" ToRole="Quiz_Content" />
+        </EntityType>
+        <EntityType Name="Quiz_B_User_Answer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="QuizId" Type="Int32" Nullable="false" />
+          <Property Name="Answer" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="UserInfo" Relationship="Self.FK_Quiz_B_User_Answer_UserInfo" FromRole="Quiz_B_User_Answer" ToRole="UserInfo" />
+          <NavigationProperty Name="Quiz_Content" Relationship="DB_Zertis_OCsModel.FK_Quiz_B_User_Answer_Quiz_Content" FromRole="Quiz_B_User_Answer" ToRole="Quiz_Content" />
+        </EntityType>
+        <EntityType Name="Quiz_C_User_Answer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="QuizId" Type="Int32" Nullable="false" />
+          <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="UserInfo" Relationship="Self.FK_User_AnswerOther_QuizA_UserInfo" FromRole="Quiz_C_User_Answer" ToRole="UserInfo" />
+          <NavigationProperty Name="Quiz_Content" Relationship="DB_Zertis_OCsModel.FK_Quiz_C_User_Answer_Quiz_Content" FromRole="Quiz_C_User_Answer" ToRole="Quiz_Content" />
+        </EntityType>
+        <EntityType Name="Quiz_Option">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuizId" Type="Int32" Nullable="false" />
+          <Property Name="A" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="B" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="D" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="E" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="lang" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Quiz_Content" Relationship="DB_Zertis_OCsModel.FK_Quiz_Option_Quiz_Content" FromRole="Quiz_Option" ToRole="Quiz_Content" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Question" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="A" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="B" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="D" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="E" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="F" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="G" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Answer" Type="Int32" />
+          <Property Name="LessonId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="VideoL" Relationship="Self.FK_Test_VideoL" FromRole="Test" ToRole="VideoL" />
+        </EntityType>
+        <EntityType Name="User_Premium">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="PremiumId" Type="Int32" Nullable="false" />
+          <Property Name="buy" Type="Boolean" Nullable="false" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Premium" Relationship="Self.FK_User_Premium_Premium" FromRole="User_Premium" ToRole="Premium" />
+          <NavigationProperty Name="User_Premium_Status" Relationship="Self.FK_User_Premium_Status_User_Premium" FromRole="User_Premium" ToRole="User_Premium_Status" />
+          <NavigationProperty Name="UserInfo" Relationship="Self.FK_User_Premium_User_Premium" FromRole="User_Premium" ToRole="UserInfo" />
+        </EntityType>
+        <EntityType Name="User_Premium_Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_PremiumId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User_Premium" Relationship="Self.FK_User_Premium_Status_User_Premium" FromRole="User_Premium_Status" ToRole="User_Premium" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SureName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="56" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LevelId" Type="Int32" />
+          <Property Name="RegTime" Type="DateTime" Precision="3" />
+          <Property Name="ExpiredVLDate" Type="DateTime" Precision="0" />
+          <Property Name="Expired" Type="Boolean" />
+          <NavigationProperty Name="EyeVs" Relationship="Self.FK_EyeV_UserInfo" FromRole="UserInfo" ToRole="EyeV" />
+          <NavigationProperty Name="Isbrannis" Relationship="Self.FK_Isbranni_UserInfo" FromRole="UserInfo" ToRole="Isbranni" />
+          <NavigationProperty Name="LessonVideoTimes" Relationship="Self.FK_LessonVideoTime_UserInfo" FromRole="UserInfo" ToRole="LessonVideoTime" />
+          <NavigationProperty Name="LikeVs" Relationship="Self.FK_LikeV_UserInfo" FromRole="UserInfo" ToRole="LikeV" />
+          <NavigationProperty Name="Quiz_B_User_Answer" Relationship="Self.FK_Quiz_B_User_Answer_UserInfo" FromRole="UserInfo" ToRole="Quiz_B_User_Answer" />
+          <NavigationProperty Name="Quiz_C_User_Answer" Relationship="Self.FK_User_AnswerOther_QuizA_UserInfo" FromRole="UserInfo" ToRole="Quiz_C_User_Answer" />
+          <NavigationProperty Name="User_Premium" Relationship="Self.FK_User_Premium_User_Premium" FromRole="UserInfo" ToRole="User_Premium" />
+          <NavigationProperty Name="Users_Certificates" Relationship="Self.FK_Users_Certificates_UserInfo" FromRole="UserInfo" ToRole="Users_Certificates" />
+          <NavigationProperty Name="ValitOS" Relationship="Self.FK_ValitOS_UserInfo" FromRole="UserInfo" ToRole="ValitOS" />
+          <NavigationProperty Name="Quiz_A_User_Answer" Relationship="DB_Zertis_OCsModel.FK_Quiz_A_User_Answer_UserInfo" FromRole="UserInfo" ToRole="Quiz_A_User_Answer" />
+        </EntityType>
+        <EntityType Name="Users_Certificates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PublicCert" Type="Boolean" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CertificateURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserInfo" Relationship="Self.FK_Users_Certificates_UserInfo" FromRole="Users_Certificates" ToRole="UserInfo" />
+        </EntityType>
+        <EntityType Name="ValitO">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="VdeoLXId" Type="Double" Nullable="false" />
+          <Property Name="KB" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="UserInfo" Relationship="Self.FK_ValitOS_UserInfo" FromRole="ValitOS" ToRole="UserInfo" />
+        </EntityType>
+        <EntityType Name="VideoL">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="XId" Type="Double" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ModulId" Type="Int32" Nullable="false" />
+          <Property Name="Link" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShortT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Iconimg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Iconimg2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="language" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Modul" Relationship="Self.FK_VideoL_Modul" FromRole="VideoL" ToRole="Modul" />
+          <NavigationProperty Name="Tests" Relationship="Self.FK_Test_VideoL" FromRole="VideoL" ToRole="Test" />
+          <NavigationProperty Name="VideoXL" Relationship="Self.FK_VideoL_VideoXL" FromRole="VideoL" ToRole="VideoXL" />
+        </EntityType>
+        <EntityType Name="VideoLEM">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VideoXId" Type="Double" Nullable="false" />
+          <Property Name="Likes" Type="Int32" Nullable="false" />
+          <Property Name="Eye" Type="Int32" Nullable="false" />
+          <Property Name="minute" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="VideoXL" Relationship="Self.FK_VideoLEM_VideoXL" FromRole="VideoLEM" ToRole="VideoXL" />
+        </EntityType>
+        <EntityType Name="VideoXL">
+          <Key>
+            <PropertyRef Name="XId" />
+          </Key>
+          <Property Name="XId" Type="Double" Nullable="false" />
+          <Property Name="MId" Type="Int32" Nullable="false" />
+          <Property Name="Enable" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Modul" Relationship="Self.FK_VideoXL_Modul" FromRole="VideoXL" ToRole="Modul" />
+          <NavigationProperty Name="VideoLs" Relationship="Self.FK_VideoL_VideoXL" FromRole="VideoXL" ToRole="VideoL" />
+          <NavigationProperty Name="VideoLEMs" Relationship="Self.FK_VideoLEM_VideoXL" FromRole="VideoXL" ToRole="VideoLEM" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EyeV_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="EyeV" Type="Self.EyeV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EyeV">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Isbranni_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="Isbranni" Type="Self.Isbranni" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Isbranni">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LessonVideoTime_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="LessonVideoTime" Type="Self.LessonVideoTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LessonVideoTime">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeV_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="LikeV" Type="Self.LikeV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LikeV">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Modul_userLevel_Modul">
+          <End Role="Modul" Type="Self.Modul" Multiplicity="1" />
+          <End Role="Modul_userLevel" Type="Self.Modul_userLevel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modul">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Modul_userLevel">
+              <PropertyRef Name="ModuleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Modules_Property_Modul">
+          <End Role="Modul" Type="Self.Modul" Multiplicity="1" />
+          <End Role="Modules_Property" Type="Self.Modules_Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modul">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Modules_Property">
+              <PropertyRef Name="MId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VideoL_Modul">
+          <End Role="Modul" Type="Self.Modul" Multiplicity="1" />
+          <End Role="VideoL" Type="Self.VideoL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modul">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VideoL">
+              <PropertyRef Name="ModulId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VideoXL_Modul">
+          <End Role="Modul" Type="Self.Modul" Multiplicity="1" />
+          <End Role="VideoXL" Type="Self.VideoXL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modul">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VideoXL">
+              <PropertyRef Name="MId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Premium_Premium">
+          <End Role="Premium" Type="Self.Premium" Multiplicity="1" />
+          <End Role="User_Premium" Type="Self.User_Premium" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Premium">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_Premium">
+              <PropertyRef Name="PremiumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quiz_B_User_Answer_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="Quiz_B_User_Answer" Type="Self.Quiz_B_User_Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Quiz_B_User_Answer">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_AnswerOther_QuizA_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="Quiz_C_User_Answer" Type="Self.Quiz_C_User_Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Quiz_C_User_Answer">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Test_VideoL">
+          <End Role="VideoL" Type="Self.VideoL" Multiplicity="1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VideoL">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="LessonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Premium_Status_User_Premium">
+          <End Role="User_Premium" Type="Self.User_Premium" Multiplicity="1" />
+          <End Role="User_Premium_Status" Type="Self.User_Premium_Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_Premium">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_Premium_Status">
+              <PropertyRef Name="User_PremiumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Premium_User_Premium">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="User_Premium" Type="Self.User_Premium" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_Premium">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Certificates_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="Users_Certificates" Type="Self.Users_Certificates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users_Certificates">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ValitOS_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="ValitOS" Type="Self.ValitO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ValitOS">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VideoL_VideoXL">
+          <End Role="VideoXL" Type="Self.VideoXL" Multiplicity="1" />
+          <End Role="VideoL" Type="Self.VideoL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VideoXL">
+              <PropertyRef Name="XId" />
+            </Principal>
+            <Dependent Role="VideoL">
+              <PropertyRef Name="XId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VideoLEM_VideoXL">
+          <End Role="VideoXL" Type="Self.VideoXL" Multiplicity="1" />
+          <End Role="VideoLEM" Type="Self.VideoLEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VideoXL">
+              <PropertyRef Name="XId" />
+            </Principal>
+            <Dependent Role="VideoLEM">
+              <PropertyRef Name="VideoXId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="ExpiredTimeVLs" EntityType="Self.ExpiredTimeVL" />
+          <EntitySet Name="EyeVs" EntityType="Self.EyeV" />
+          <EntitySet Name="Isbrannis" EntityType="Self.Isbranni" />
+          <EntitySet Name="JVLOes" EntityType="Self.JVLO" />
+          <EntitySet Name="LessonVideoTimes" EntityType="Self.LessonVideoTime" />
+          <EntitySet Name="LikeVs" EntityType="Self.LikeV" />
+          <EntitySet Name="Moduls" EntityType="Self.Modul" />
+          <EntitySet Name="Modul_userLevel" EntityType="Self.Modul_userLevel" />
+          <EntitySet Name="Modules_Property" EntityType="Self.Modules_Property" />
+          <EntitySet Name="Premiums" EntityType="Self.Premium" />
+          <EntitySet Name="Premium_OrderId" EntityType="Self.Premium_OrderId" />
+          <EntitySet Name="Quizs" EntityType="Self.Quiz" />
+          <EntitySet Name="Quiz_B_User_Answer" EntityType="Self.Quiz_B_User_Answer" />
+          <EntitySet Name="Quiz_C_User_Answer" EntityType="Self.Quiz_C_User_Answer" />
+          <EntitySet Name="Quiz_Option" EntityType="Self.Quiz_Option" />
+          <EntitySet Name="Tests" EntityType="Self.Test" />
+          <EntitySet Name="User_Premium" EntityType="Self.User_Premium" />
+          <EntitySet Name="User_Premium_Status" EntityType="Self.User_Premium_Status" />
+          <EntitySet Name="UserInfoes" EntityType="Self.UserInfo" />
+          <EntitySet Name="Users_Certificates" EntityType="Self.Users_Certificates" />
+          <EntitySet Name="ValitOS" EntityType="Self.ValitO" />
+          <EntitySet Name="VideoLs" EntityType="Self.VideoL" />
+          <EntitySet Name="VideoLEMs" EntityType="Self.VideoLEM" />
+          <EntitySet Name="VideoXLs" EntityType="Self.VideoXL" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EyeV_UserInfo" Association="Self.FK_EyeV_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+            <End Role="EyeV" EntitySet="EyeVs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Isbranni_UserInfo" Association="Self.FK_Isbranni_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+            <End Role="Isbranni" EntitySet="Isbrannis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LessonVideoTime_UserInfo" Association="Self.FK_LessonVideoTime_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+            <End Role="LessonVideoTime" EntitySet="LessonVideoTimes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeV_UserInfo" Association="Self.FK_LikeV_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+            <End Role="LikeV" EntitySet="LikeVs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Modul_userLevel_Modul" Association="Self.FK_Modul_userLevel_Modul">
+            <End Role="Modul" EntitySet="Moduls" />
+            <End Role="Modul_userLevel" EntitySet="Modul_userLevel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Modules_Property_Modul" Association="Self.FK_Modules_Property_Modul">
+            <End Role="Modul" EntitySet="Moduls" />
+            <End Role="Modules_Property" EntitySet="Modules_Property" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VideoL_Modul" Association="Self.FK_VideoL_Modul">
+            <End Role="Modul" EntitySet="Moduls" />
+            <End Role="VideoL" EntitySet="VideoLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VideoXL_Modul" Association="Self.FK_VideoXL_Modul">
+            <End Role="Modul" EntitySet="Moduls" />
+            <End Role="VideoXL" EntitySet="VideoXLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Premium_Premium" Association="Self.FK_User_Premium_Premium">
+            <End Role="Premium" EntitySet="Premiums" />
+            <End Role="User_Premium" EntitySet="User_Premium" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quiz_B_User_Answer_UserInfo" Association="Self.FK_Quiz_B_User_Answer_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+            <End Role="Quiz_B_User_Answer" EntitySet="Quiz_B_User_Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_AnswerOther_QuizA_UserInfo" Association="Self.FK_User_AnswerOther_QuizA_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+            <End Role="Quiz_C_User_Answer" EntitySet="Quiz_C_User_Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_VideoL" Association="Self.FK_Test_VideoL">
+            <End Role="VideoL" EntitySet="VideoLs" />
+            <End Role="Test" EntitySet="Tests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Premium_Status_User_Premium" Association="Self.FK_User_Premium_Status_User_Premium">
+            <End Role="User_Premium" EntitySet="User_Premium" />
+            <End Role="User_Premium_Status" EntitySet="User_Premium_Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Premium_User_Premium" Association="Self.FK_User_Premium_User_Premium">
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+            <End Role="User_Premium" EntitySet="User_Premium" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Certificates_UserInfo" Association="Self.FK_Users_Certificates_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+            <End Role="Users_Certificates" EntitySet="Users_Certificates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ValitOS_UserInfo" Association="Self.FK_ValitOS_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+            <End Role="ValitOS" EntitySet="ValitOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VideoL_VideoXL" Association="Self.FK_VideoL_VideoXL">
+            <End Role="VideoXL" EntitySet="VideoXLs" />
+            <End Role="VideoL" EntitySet="VideoLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VideoLEM_VideoXL" Association="Self.FK_VideoLEM_VideoXL">
+            <End Role="VideoXL" EntitySet="VideoXLs" />
+            <End Role="VideoLEM" EntitySet="VideoLEMs" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="Quiz_Content" EntityType="DB_Zertis_OCsModel.Quiz_Content" />
+          <AssociationSet Name="FK_Quiz_Content_Quiz" Association="DB_Zertis_OCsModel.FK_Quiz_Content_Quiz">
+            <End Role="Quiz" EntitySet="Quizs" />
+            <End Role="Quiz_Content" EntitySet="Quiz_Content" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quiz_B_User_Answer_Quiz_Content" Association="DB_Zertis_OCsModel.FK_Quiz_B_User_Answer_Quiz_Content">
+            <End Role="Quiz_Content" EntitySet="Quiz_Content" />
+            <End Role="Quiz_B_User_Answer" EntitySet="Quiz_B_User_Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quiz_C_User_Answer_Quiz_Content" Association="DB_Zertis_OCsModel.FK_Quiz_C_User_Answer_Quiz_Content">
+            <End Role="Quiz_Content" EntitySet="Quiz_Content" />
+            <End Role="Quiz_C_User_Answer" EntitySet="Quiz_C_User_Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quiz_Option_Quiz_Content" Association="DB_Zertis_OCsModel.FK_Quiz_Option_Quiz_Content">
+            <End Role="Quiz_Content" EntitySet="Quiz_Content" />
+            <End Role="Quiz_Option" EntitySet="Quiz_Option" />
+          </AssociationSet>
+          <EntitySet Name="Quiz_A_User_Answer" EntityType="DB_Zertis_OCsModel.Quiz_A_User_Answer" />
+          <AssociationSet Name="FK_Quiz_A_User_Answer_Quiz_Content" Association="DB_Zertis_OCsModel.FK_Quiz_A_User_Answer_Quiz_Content">
+            <End Role="Quiz_Content" EntitySet="Quiz_Content" />
+            <End Role="Quiz_A_User_Answer" EntitySet="Quiz_A_User_Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quiz_A_User_Answer_UserInfo" Association="DB_Zertis_OCsModel.FK_Quiz_A_User_Answer_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+            <End Role="Quiz_A_User_Answer" EntitySet="Quiz_A_User_Answer" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Quiz_Content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="language" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Quiz" Relationship="DB_Zertis_OCsModel.FK_Quiz_Content_Quiz" FromRole="Quiz_Content" ToRole="Quiz" />
+          <NavigationProperty Name="Quiz_B_User_Answer" Relationship="DB_Zertis_OCsModel.FK_Quiz_B_User_Answer_Quiz_Content" FromRole="Quiz_Content" ToRole="Quiz_B_User_Answer" />
+          <NavigationProperty Name="Quiz_C_User_Answer" Relationship="DB_Zertis_OCsModel.FK_Quiz_C_User_Answer_Quiz_Content" FromRole="Quiz_Content" ToRole="Quiz_C_User_Answer" />
+          <NavigationProperty Name="Quiz_Option" Relationship="DB_Zertis_OCsModel.FK_Quiz_Option_Quiz_Content" FromRole="Quiz_Content" ToRole="Quiz_Option" />
+          <NavigationProperty Name="Quiz_A_User_Answer" Relationship="DB_Zertis_OCsModel.FK_Quiz_A_User_Answer_Quiz_Content" FromRole="Quiz_Content" ToRole="Quiz_A_User_Answer" />
+        </EntityType>
+        <Association Name="FK_Quiz_Content_Quiz">
+          <End Type="DB_Zertis_OCsModel.Quiz" Role="Quiz" Multiplicity="1" />
+          <End Type="DB_Zertis_OCsModel.Quiz_Content" Role="Quiz_Content" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quiz">
+              <PropertyRef Name="QId" />
+            </Principal>
+            <Dependent Role="Quiz_Content">
+              <PropertyRef Name="QId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quiz_B_User_Answer_Quiz_Content">
+          <End Type="DB_Zertis_OCsModel.Quiz_Content" Role="Quiz_Content" Multiplicity="1" />
+          <End Type="DB_Zertis_OCsModel.Quiz_B_User_Answer" Role="Quiz_B_User_Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quiz_Content">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Quiz_B_User_Answer">
+              <PropertyRef Name="QuizId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quiz_C_User_Answer_Quiz_Content">
+          <End Type="DB_Zertis_OCsModel.Quiz_Content" Role="Quiz_Content" Multiplicity="1" />
+          <End Type="DB_Zertis_OCsModel.Quiz_C_User_Answer" Role="Quiz_C_User_Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quiz_Content">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Quiz_C_User_Answer">
+              <PropertyRef Name="QuizId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quiz_Option_Quiz_Content">
+          <End Type="DB_Zertis_OCsModel.Quiz_Content" Role="Quiz_Content" Multiplicity="1" />
+          <End Type="DB_Zertis_OCsModel.Quiz_Option" Role="Quiz_Option" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quiz_Content">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Quiz_Option">
+              <PropertyRef Name="QuizId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Quiz_A_User_Answer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="QuizId" Type="Int32" Nullable="false" />
+          <Property Name="Answer" Type="Int32" Nullable="false" />
+          <Property Name="AnswerOther" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Quiz_Content" Relationship="DB_Zertis_OCsModel.FK_Quiz_A_User_Answer_Quiz_Content" FromRole="Quiz_A_User_Answer" ToRole="Quiz_Content" />
+          <NavigationProperty Name="UserInfo" Relationship="DB_Zertis_OCsModel.FK_Quiz_A_User_Answer_UserInfo" FromRole="Quiz_A_User_Answer" ToRole="UserInfo" />
+        </EntityType>
+        <Association Name="FK_Quiz_A_User_Answer_Quiz_Content">
+          <End Type="DB_Zertis_OCsModel.Quiz_Content" Role="Quiz_Content" Multiplicity="1" />
+          <End Type="DB_Zertis_OCsModel.Quiz_A_User_Answer" Role="Quiz_A_User_Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quiz_Content">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Quiz_A_User_Answer">
+              <PropertyRef Name="QuizId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quiz_A_User_Answer_UserInfo">
+          <End Type="DB_Zertis_OCsModel.UserInfo" Role="UserInfo" Multiplicity="1" />
+          <End Type="DB_Zertis_OCsModel.Quiz_A_User_Answer" Role="Quiz_A_User_Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Quiz_A_User_Answer">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище DB_Zertis_OCsModelContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpiredTimeVLs">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.ExpiredTimeVL">
+              <MappingFragment StoreEntitySet="ExpiredTimeVL">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DefaultVLYear" ColumnName="DefaultVLYear" />
+                <ScalarProperty Name="DefaultVLMonth" ColumnName="DefaultVLMonth" />
+                <ScalarProperty Name="DefaultVLDay" ColumnName="DefaultVLDay" />
+                <ScalarProperty Name="Enable" ColumnName="Enable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EyeVs">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.EyeV">
+              <MappingFragment StoreEntitySet="EyeV">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="VideoXId" ColumnName="VideoXId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Isbrannis">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.Isbranni">
+              <MappingFragment StoreEntitySet="Isbranni">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="VideoLXId" ColumnName="VideoLXId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JVLOes">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.JVLO">
+              <MappingFragment StoreEntitySet="JVLO">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="OV" ColumnName="OV" />
+                <ScalarProperty Name="X" ColumnName="X" />
+                <ScalarProperty Name="TBB" ColumnName="TBB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LessonVideoTimes">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.LessonVideoTime">
+              <MappingFragment StoreEntitySet="LessonVideoTime">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="LessonXId" ColumnName="LessonXId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LikeVs">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.LikeV">
+              <MappingFragment StoreEntitySet="LikeV">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="VideoXId" ColumnName="VideoXId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Moduls">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.Modul">
+              <MappingFragment StoreEntitySet="Modul">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Enable" ColumnName="Enable" />
+                <ScalarProperty Name="XId" ColumnName="XId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modul_userLevel">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.Modul_userLevel">
+              <MappingFragment StoreEntitySet="Modul_userLevel">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="LevelId" ColumnName="LevelId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modules_Property">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.Modules_Property">
+              <MappingFragment StoreEntitySet="Modules_Property">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MId" ColumnName="MId" />
+                <ScalarProperty Name="Titile" ColumnName="Titile" />
+                <ScalarProperty Name="lang" ColumnName="lang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Premiums">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.Premium">
+              <MappingFragment StoreEntitySet="Premium">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LevelId" ColumnName="LevelId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Certificatre" ColumnName="Certificatre" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Premium_OrderId">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.Premium_OrderId">
+              <MappingFragment StoreEntitySet="Premium_OrderId">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quizs">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.Quiz">
+              <MappingFragment StoreEntitySet="Quiz">
+                <ScalarProperty Name="QId" ColumnName="QId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quiz_B_User_Answer">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.Quiz_B_User_Answer">
+              <MappingFragment StoreEntitySet="Quiz_B_User_Answer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="QuizId" ColumnName="QuizId" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quiz_C_User_Answer">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.Quiz_C_User_Answer">
+              <MappingFragment StoreEntitySet="Quiz_C_User_Answer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="QuizId" ColumnName="QuizId" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quiz_Option">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.Quiz_Option">
+              <MappingFragment StoreEntitySet="Quiz_Option">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="QuizId" ColumnName="QuizId" />
+                <ScalarProperty Name="A" ColumnName="A" />
+                <ScalarProperty Name="B" ColumnName="B" />
+                <ScalarProperty Name="C" ColumnName="C" />
+                <ScalarProperty Name="D" ColumnName="D" />
+                <ScalarProperty Name="E" ColumnName="E" />
+                <ScalarProperty Name="lang" ColumnName="lang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tests">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.Test">
+              <MappingFragment StoreEntitySet="Test">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="A" ColumnName="A" />
+                <ScalarProperty Name="B" ColumnName="B" />
+                <ScalarProperty Name="C" ColumnName="C" />
+                <ScalarProperty Name="D" ColumnName="D" />
+                <ScalarProperty Name="E" ColumnName="E" />
+                <ScalarProperty Name="F" ColumnName="F" />
+                <ScalarProperty Name="G" ColumnName="G" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="LessonId" ColumnName="LessonId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Premium">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.User_Premium">
+              <MappingFragment StoreEntitySet="User_Premium">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PremiumId" ColumnName="PremiumId" />
+                <ScalarProperty Name="buy" ColumnName="buy" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Premium_Status">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.User_Premium_Status">
+              <MappingFragment StoreEntitySet="User_Premium_Status">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="User_PremiumId" ColumnName="User_PremiumId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfoes">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.UserInfo">
+              <MappingFragment StoreEntitySet="UserInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SureName" ColumnName="SureName" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LevelId" ColumnName="LevelId" />
+                <ScalarProperty Name="RegTime" ColumnName="RegTime" />
+                <ScalarProperty Name="ExpiredVLDate" ColumnName="ExpiredVLDate" />
+                <ScalarProperty Name="Expired" ColumnName="Expired" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users_Certificates">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.Users_Certificates">
+              <MappingFragment StoreEntitySet="Users_Certificates">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PublicCert" ColumnName="PublicCert" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CertificateURL" ColumnName="CertificateURL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ValitOS">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.ValitO">
+              <MappingFragment StoreEntitySet="ValitOS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="VdeoLXId" ColumnName="VdeoLXId" />
+                <ScalarProperty Name="KB" ColumnName="KB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VideoLs">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.VideoL">
+              <MappingFragment StoreEntitySet="VideoL">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="XId" ColumnName="XId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ModulId" ColumnName="ModulId" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="ShortT" ColumnName="ShortT" />
+                <ScalarProperty Name="Iconimg" ColumnName="Iconimg" />
+                <ScalarProperty Name="Iconimg2" ColumnName="Iconimg2" />
+                <ScalarProperty Name="language" ColumnName="language" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VideoLEMs">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.VideoLEM">
+              <MappingFragment StoreEntitySet="VideoLEM">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VideoXId" ColumnName="VideoXId" />
+                <ScalarProperty Name="Likes" ColumnName="Likes" />
+                <ScalarProperty Name="Eye" ColumnName="Eye" />
+                <ScalarProperty Name="minute" ColumnName="minute" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VideoXLs">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.VideoXL">
+              <MappingFragment StoreEntitySet="VideoXL">
+                <ScalarProperty Name="XId" ColumnName="XId" />
+                <ScalarProperty Name="MId" ColumnName="MId" />
+                <ScalarProperty Name="Enable" ColumnName="Enable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="DB_Zertis_OCsModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Quiz_Content">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.Quiz_Content">
+              <MappingFragment StoreEntitySet="Quiz_Content">
+                <ScalarProperty Name="language" ColumnName="language" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="QId" ColumnName="QId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quiz_A_User_Answer">
+            <EntityTypeMapping TypeName="DB_Zertis_OCsModel.Quiz_A_User_Answer">
+              <MappingFragment StoreEntitySet="Quiz_A_User_Answer">
+                <ScalarProperty Name="AnswerOther" ColumnName="AnswerOther" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="QuizId" ColumnName="QuizId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

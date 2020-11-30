@@ -1,0 +1,765 @@
+﻿@using OnlineCourseZertis.Models
+@model Quiz_A
+
+@{
+
+    Layout = "~/Views/Shared/_LayoutTestandTask.cshtml";
+
+    var setLang = GetUser.Quiz(ViewBag.language);
+}
+
+
+
+
+<link href="~/Content/css/private/firework.css" rel="stylesheet" />
+
+
+
+
+<div class="md-modal md-effect-13" id="modal-007">
+    <div class="md-content">
+        <div class="modal-header" style="font-weight:bold">
+
+
+            <button class="md-close close" style="font-size:40px">&times;</button>
+
+
+
+        </div>
+        <div class="modal-body">
+
+            @if (ViewBag.CertStatus == 1)
+            {
+                if (ViewBag.CerURL != null)
+                {
+                    <img src="@Url.Content(ViewBag.CerURL)" class="img-thumbnail hidden" id="certImage" style="margin-bottom:20px" />
+                }
+
+
+            }
+
+
+
+
+        </div>
+        <div class="modal-footer">
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="md-overlay pyro">
+
+    <div class="before hidden firework"></div>
+    <div class="after hidden firework"></div>
+
+</div>
+
+
+
+<div class="col-sm-8 col-md-9">
+
+    <header class="main-box-header clearfix" style="margin-bottom:20px;margin-top:10px">
+        <h2 style="font-weight:900 !important">@setLang.Title</h2>
+    </header>
+
+
+    <div class="main-box clearfix " style="padding:20px">
+
+        <button class="md-trigger btn btn-success  hidden" style="float:right" id="rezult" data-modal="modal-007"><i class="fa fa-certificate "></i> Cертификат</button>
+
+
+    </div>
+
+    <div class="main-box-body clearfix">
+
+
+
+        <div id="QuizGet">
+
+
+
+            <div class="md-content" id="md-content">
+
+                @if (Model != null)
+                {
+                    <div class="modal-header">
+
+                        <h4 style="font-weight: bold" class="modal-title">@Model.Quiz_Title</h4>
+
+
+                    </div>
+                    <div class="modal-body">
+
+                        <input type="hidden" id="radio_result" value="@Model.User_Answer" />
+
+                        @{
+
+
+
+                            var answerA = "";
+                            var answerB = "";
+                            var answerC = "";
+                            var answerD = "";
+                            var answerE = "";
+                            var disableArea = "disabled";
+
+
+
+                            switch (Model.User_Answer)
+                            {
+                                case 1:
+                                    answerA = "checked";
+                                    break;
+                                case 2:
+                                    answerB = "checked";
+                                    break;
+                                case 3:
+                                    answerC = "checked";
+                                    break;
+                                case 4:
+                                    answerD = "checked";
+                                    break;
+                                case 5:
+                                    answerE = "checked";
+                                    disableArea = "";
+                                    break;
+
+                            }
+
+
+
+
+                        }
+
+
+
+
+                        <div class="radio">
+
+                            <input type="radio" @answerA name="optionsRadios" id="radioA" onclick="radio_qa(1)">
+
+
+
+
+
+
+                            <label style="font-weight:600" for="radioA">
+                                @Model.A
+                            </label>
+                        </div>
+
+
+                        <div class="radio">
+
+
+                            <input type="radio" @answerB name="optionsRadios" id="radioB" onclick="radio_qa(2)">
+
+                            <label style="font-weight:600" for="radioB">
+                                @Model.B
+
+                            </label>
+                        </div>
+
+
+
+                        <div class="radio">
+
+                            <input type="radio" @answerC name="optionsRadios" id="radioC" onclick="radio_qa(3)" />
+
+                            <label style="font-weight:600" for="radioC">
+                                @Model.C
+                            </label>
+                        </div>
+
+
+                        <div class="radio hidden">
+
+
+                            <input type="radio" @answerD name="optionsRadios" id="radioD" onclick="radio_qa(4)" />
+
+
+                            <label style="font-weight:600" for="radioE">
+
+                                @Model.D
+
+                            </label>
+
+                        </div>
+
+
+                        <div class="radio">
+
+
+                            <input type="radio" @answerE name="optionsRadios" id="radioE" onclick="radio_qa(5)" />
+
+
+                            <label style="font-weight:600" for="radioE">
+
+                                @Model.E
+
+                            </label>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <textarea maxlength="180" id="AnswerTextArea" class="form-control" @disableArea rows="3"> @Model.User_AnswerOther</textarea>
+
+                        </div>
+
+                        <div id="Quiz_MsgError" class="hidden">
+
+
+                        </div>
+
+                        <div class="prevnext_btn">
+
+                            <a href="#" class="next" style="float:right" id="next_quiz_a" onclick="quiz(@Model.QId,@Model.Q_content_Id,0)"><span>@setLang.Next →</span></a>
+
+                        </div>
+
+
+
+
+                    </div>
+             }
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+        <input type="hidden" value="@ViewBag.CertStatus" id="CertStatus" />
+
+        @if (ViewBag.CertStatus == 1)
+        {
+            if (ViewBag.CerURL != null)
+            {
+                <a href="@Url.Content(ViewBag.CerURL)" download="" class="hidden" id="certificate"></a>
+            }
+
+        }
+
+
+    </div>
+
+    <input type="hidden" id="actionhappen" value="0" />
+
+
+
+
+
+    <script>
+        var quiz_a_start = 1;
+        var quiz_b_start = 3;
+        var quiz_c_start = 10;
+        var quiz_a_end = 2;
+        var quiz_b_end = 9;
+        var quiz_c_end = 14;
+
+        function quiz(QId, Q_C_Id,completeQUIZ) {
+
+
+            var radio_result = 0;
+
+
+            if (QId <= quiz_b_end) {
+
+                actionhappen = document.getElementById("actionhappen").value;
+                var radio_result = document.getElementById("radio_result").value;
+
+                if (radio_result != 0) {
+                    if (actionhappen == 0) {
+                        next_quiz(QId);
+
+                        return;
+                    }
+
+                }
+
+
+            }
+
+
+            if (QId <= quiz_a_end) {
+
+
+                var arearesult = AreaValidate();
+
+                switch (radio_result) {
+                    case 0:
+                        Quiz_Msg_Error("Выберите один из вариантов");
+                        break;
+                    case 5:
+                        if (arearesult == "") {
+
+                            Quiz_Msg_Error("Пожалуйста, введите здесь текстовое поле");
+                            return;
+
+                        }
+                        SendData_QuizA(QId, Q_C_Id, 5, arearesult)
+
+                        break;
+                    default:
+                        SendData_QuizA(QId, Q_C_Id, radio_result, arearesult)
+
+
+                }
+
+            }
+
+            if ((QId > quiz_a_end) && (QId <= quiz_b_end)) {
+
+
+                if (radio_result == 0) {
+                    Quiz_Msg_Error("Выберите один из вариантов");
+
+                }
+                else {
+                    SendData_QuizB(QId, Q_C_Id, radio_result);
+
+                }
+               
+
+               
+            }
+
+            if ((QId > quiz_b_end) && (QId <= quiz_c_end)) {
+
+                var arearesult = AreaValidate();
+
+
+                if (arearesult == "") {
+
+                    Quiz_Msg_Error("Пожалуйста, введите здесь текстовое поле");
+                    return;
+
+                }
+                else {
+                    SendData_QuizC(QId, Q_C_Id, arearesult, completeQUIZ);
+                }
+
+
+            }
+
+
+
+        }
+
+        function next_quiz(QID) {
+
+            $("#md-content").addClass("hidden");
+
+
+            if (QID < quiz_a_end) {
+
+                $('#QuizGet').load('@Url.Action("QuizAGet", "Learning")?QId=' + QID + '&lang=@ViewBag.language' + '&prevnext=1');
+
+            }
+            else if (QID >= quiz_a_end && QID < quiz_b_end) {
+                $('#QuizGet').load('@Url.Action("QuizBGet", "Learning")?QId=' + QID + '&lang=@ViewBag.language' + '&prevnext=1');
+
+            }
+            else if (QID >= quiz_b_end && QID < quiz_c_end) {
+                $('#QuizGet').load('@Url.Action("QuizCGet", "Learning")?QId=' + QID + '&lang=@ViewBag.language' + '&prevnext=1');
+
+            }
+
+
+
+        }
+
+
+        function prev_quiz(QID) {
+
+            $("#md-content").addClass("hidden");
+
+            if (QID <= quiz_b_start) {
+
+                $('#QuizGet').load('@Url.Action("QuizAGet", "Learning")?QId=' + QID + '&lang=@ViewBag.language' + '&prevnext=0');
+
+            }
+            else if (QID <= quiz_c_start) {
+                $('#QuizGet').load('@Url.Action("QuizBGet", "Learning")?QId=' + QID + '&lang=@ViewBag.language' + '&prevnext=0');
+
+            }
+            else if (QID >= quiz_c_start) {
+                $('#QuizGet').load('@Url.Action("QuizCGet", "Learning")?QId=' + QID + '&lang=@ViewBag.language' + '&prevnext=0');
+            }
+
+
+
+        }
+
+
+
+
+
+
+
+        function Quiz_Msg_Error(text) {
+            $("#Quiz_MsgError").removeClass("hidden");
+            document.getElementById("Quiz_MsgError").innerHTML = text;
+
+
+        }
+
+        function AreaValidate() {
+
+            x = document.getElementById("AnswerTextArea").value;
+            return x;
+
+        }
+
+
+        function SendData_QuizA(QID, QCId, answer, answerOther) {
+
+            var data = { Q_content_Id: QCId, answer: answer, answerOther: answerOther }
+
+
+            $.ajax({
+                type: 'POST',
+                url: "/Learning/quiz_a_user_answer",
+                data: data,
+                success: function (data) {
+                    if (data == "success") {
+                        next_quiz(QID);
+                    }
+                    else {
+                        Quiz_Msg_Error("данные не отправлены");
+                    }
+
+
+                }
+            });
+        }
+
+
+        function SendData_QuizB(QID, QCId, answer) {
+
+            var data = { Q_content_Id: QCId, answer: answer }
+
+
+            $.ajax({
+                type: 'POST',
+                url: "/Learning/quiz_b_user_answer",
+                data: data,
+                success: function (data) {
+                    if (data == "success") {
+                        next_quiz(QID);
+                    }
+                    else {
+                        Quiz_Msg_Error("данные не отправлены");
+                    }
+
+
+                }
+            });
+        }
+
+        function SendData_QuizC(QID, QCId, answer, completeQUIZ) {
+
+            var data = { Q_content_Id: QCId, answer: answer }
+
+
+            $.ajax({
+                type: 'POST',
+                url: "/Learning/quiz_c_user_answer",
+                data: data,
+                success: function (data) {
+                    if (data == "success") {
+                        if (completeQUIZ != 1) {
+                            next_quiz(QID);
+                        }
+                      
+                       
+                    }
+                    else {
+                        Quiz_Msg_Error("данные не отправлены");
+                    }
+
+
+                }
+            });
+            if (completeQUIZ == 1) {
+
+
+                var CertStatus = $("#CertStatus").val();
+
+
+                if (CertStatus == 1) {
+                    $("#rezult").click();
+
+                    $.ajax({
+                        url: "@Url.Action("certPublic", "Learning")",
+                        type: "POST",
+                        success: function (response) {
+
+                            if (response = "success") {
+
+
+
+                                $("#rezult").removeClass("hidden");
+                                $("#certImage").removeClass("hidden");
+                                $(".firework").removeClass("hidden");
+                                document.getElementById('certificate').click();
+                                $("#CertStatus").val("0");
+
+                            }
+
+
+                        },
+                        error: function () {
+
+                        }
+
+                    });
+                }
+                else {
+
+                    location.href = "@Url.Action("certificates", "User", new { language = ViewBag.language })";
+                }
+            }
+       
+
+
+        }
+
+        function radio_qa(d) {
+
+
+
+            document.getElementById("actionhappen").value = 1;
+            document.getElementById("radio_result").value = d;
+
+            if (d == 5) {
+
+                $("#AnswerTextArea").prop('disabled', false);
+            }
+            else {
+
+                $("#AnswerTextArea").prop('disabled', true);
+                document.getElementById("AnswerTextArea").value = "";
+            }
+
+        }
+
+        function radio_qb(d) {
+            document.getElementById("actionhappen").value = 1;
+            document.getElementById("radio_result").value = d;
+        }
+
+
+
+
+
+    </script>
+
+
+
+
+
+    @*<script>
+
+
+            function quiz_a(OPId, QId) {
+
+
+
+
+
+
+                var dataUP = { OPId: OPId, QId: QId }
+
+                if ((QId == 1 || QId == 2) && OPId == 5) {
+                    $("#AnswerA_" + QId).prop("disabled", false);
+                }
+
+                $.ajax({
+                    type: 'POST',
+                    url: "@Url.Action("user_quiz_a_answer", "Learning")",
+                    data: dataUP,
+                    success: function (data) {
+                        if (data == "success") {
+
+
+
+                            if (CurrentTst < 10) {
+                                $('#next_quiz_a').removeClass("hidden");
+
+
+                            }
+
+                            document.getElementById('CurrentTst').value = CurrentTst;
+                            document.getElementById("demo").innerHTML = CurrentTst;
+
+                            $("#progressbar").width((CurrentTst * 100) / 14 + '%');
+
+                        }
+                        else {
+
+                        }
+
+
+                    }
+                });
+
+
+            }
+
+
+            function nextquiz_a(QId) {
+
+                var CurrentTst = document.getElementById('CurrentTst').value;
+
+                CurrentTst++;
+
+                if (CurrentTst < 10) {
+                    $('#md-content').addClass("hidden");
+                    $('#QuizGet').load('@Url.Action("QuizAGet", "Learning")?QId=' + QId + '&lang=@ViewBag.language');
+
+
+                }
+                else {
+                    $('#md-content').addClass("hidden");
+                    $('#QuizGet').load('@Url.Action("QuizBGet", "Learning")?QId=' + QId + '&lang=@ViewBag.language');
+
+                }
+
+                document.getElementById('CurrentTst').value = CurrentTst;
+                document.getElementById("demo").innerHTML = CurrentTst;
+
+                $("#progressbar").width((CurrentTst * 100) / 14 + '%');
+
+            }
+
+            function prevQID(QId) {
+
+
+
+                if (QId < 11) {
+                    $('#md-content').addClass("hidden");
+                    $('#QuizGet').load('@Url.Action("QuizAGet", "Learning")?QId=' + QId + '&prev=1' + '&lang=@ViewBag.language');
+                }
+                else {
+                    $('#md-content').addClass("hidden");
+                    $('#QuizGet').load('@Url.Action("QuizBGet", "Learning")?QId=' + QId + '&prev=1' + '&lang=@ViewBag.language');
+
+                }
+
+                var CurrentTst = document.getElementById('CurrentTst').value;
+
+                CurrentTst--;
+
+                document.getElementById('CurrentTst').value = CurrentTst;
+                document.getElementById("demo").innerHTML = CurrentTst;
+
+                $("#progressbar").width((CurrentTst * 100) / 14 + '%');
+
+            }
+
+            function quiz_b(QId) {
+
+                var answer = document.getElementById('AnswwerB_' + QId).value;
+                var CurrentTst = document.getElementById('CurrentTst').value;
+                CurrentTst++;
+
+
+                var NxtTest = false;
+                if (CurrentTst > 14) {
+                    NxtTest = true;
+                    CurrentTst--;
+                }
+
+                var dataUP = { answer: answer, QId: QId }
+
+
+                $.ajax({
+                    type: 'POST',
+                    url: "@Url.Action("user_quiz_b_answer", "Learning")",
+                    data: dataUP,
+                    success: function (data) {
+                        if (data == "success") {
+
+
+
+                            if (NxtTest == false) {
+                                $('#md-content').addClass("hidden");
+                                $('#QuizGet').load('@Url.Action("QuizBGet", "Learning")?QId=' + QId + '&lang=@ViewBag.language');
+
+                            }
+                            else {
+
+                                var CertStatus = $("#CertStatus").val();
+
+
+
+                                $("#next_quiz_b").addClass("hidden");
+
+                                if (CertStatus == 1) {
+                                    $("#rezult").click();
+
+                                    $.ajax({
+                                        url: "@Url.Action("certPublic", "Learning")",
+                                        type: "POST",
+                                        success: function (response) {
+
+                                            if (response = "success") {
+
+
+
+                                                $("#rezult").removeClass("hidden");
+                                                $("#certImage").removeClass("hidden");
+                                                $(".firework").removeClass("hidden");
+                                                document.getElementById('certificate').click();
+                                                $("#CertStatus").val("0");
+
+                                            }
+
+
+                                        },
+                                        error: function () {
+
+                                        }
+
+                                    });
+
+
+                                }
+
+                            }
+
+                            document.getElementById('CurrentTst').value = CurrentTst;
+                            document.getElementById("demo").innerHTML = CurrentTst;
+                            $("#progressbar").width((CurrentTst * 100) / 14 + '%');
+
+                        }
+                        else {
+
+                        }
+
+
+                    }
+                });
+
+            }
+
+
+
+        </script>*@
+
+
+</div>

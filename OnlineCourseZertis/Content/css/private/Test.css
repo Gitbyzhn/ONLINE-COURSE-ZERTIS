@@ -1,0 +1,91 @@
+﻿.main-box {
+    display: inherit !important;
+}
+
+.dataTables_scrollHead {
+    max-width: 100%;
+}
+
+.dataTables_scrollBody {
+    max-width: 100%;
+}
+
+.dataTables_scrollFoot {
+    max-width: 100%;
+}
+
+body {
+    font-size: 16px;
+}
+
+.img-responsive {
+    max-width: 60% !important;
+}
+
+.listl {
+    border-radius: 3px;
+    margin-top: 20px;
+    padding: 10px 8px 10px 8px;
+    border: 1px solid #f4f1e8;
+}
+
+    .listl:hover {
+        background-color: #f5f5f5;
+    }
+
+
+.purchasebtnmenu {
+    background-color: #4ba64f;
+}
+
+
+    .purchasebtnmenu > a:hover {
+        background-color: #4ba64f !important;
+    }
+
+
+    .purchasebtnmenu > a {
+        color: white !important;
+    }
+
+        .purchasebtnmenu > a > i {
+            color: #ffc107;
+        }
+#Quiz_MsgError {
+    padding: 5px 10px;
+    background-color: #e84e40;
+    color: white;
+}
+.prevnext_btn {
+    margin-top:15px;
+}
+
+@media(max-width:768px) {
+    .previous, .next {
+        font-size: 14px;
+    }
+}
+
+@media(min-width:0px) {
+    .videoh {
+        height: 200px;
+    }
+}
+
+@media(min-width:381px) {
+    .videoh {
+        height: 200px;
+    }
+}
+
+@media(min-width:460px) {
+    .videoh {
+        height: 300px;
+    }
+}
+
+@media(min-width:600px) {
+    .videoh {
+        height: 400px;
+    }
+}

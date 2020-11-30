@@ -1,0 +1,171 @@
+﻿@model  IEnumerable<OnlineCourseZertis.Models.VideoL>
+
+
+    @{
+    ViewBag.Title = "creategroup";
+    ViewBag.creategroup = "active";
+    Layout = "~/Views/Shared/_Layout_portal.cshtml";
+    }
+
+    
+
+
+
+
+    <section class="content-header">
+        <h1>
+            Создать Видео Тест
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="/portal/groups"><i class="fa fa-dashboard"></i>ВИДЕО ТЕСТЫ</a></li>
+            <li><a href="/portal/creategroup">Создать Видео Тест</a></li>
+
+        </ol>
+    </section>
+
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+
+            <div class="col-xs-12 col-md-12 ">
+
+                <!-- Box Comment -->
+                <div class="box box-widget">
+
+
+                    <form method="post" >
+                        <div class="box-body">
+
+
+
+                            <div class="col-xs-12 col-md-12">
+
+
+
+                                <div class="form-group">
+                                    <label for="Name">Язык</label>
+                                    <input disabled class="form-control" value="@ViewBag.language">
+                                </div>
+
+
+                                <select class="form-control" name="LessonId" required>
+
+                                
+                                   
+
+
+
+                                    @foreach (var item in Model)
+                                    {
+
+                                        if (item.Id == ViewBag.LessonId)
+                                        {
+
+                                            <option  selected value="@item.Id">@item.Name</option>
+
+                                        }
+
+                                        else
+                                        {
+                                            <option value="@item.Id">@item.Name</option>
+                                        }
+
+
+
+                                    }
+
+                                </select>
+
+
+                                <div class="form-group">
+                                    <label for="Name">Вопрос</label>
+                                    <input type="text" class="form-control" name="Question" required>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="Name">A</label>
+                                    <input type="text" class="form-control" name="A" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Name">B</label>
+                                    <input type="text" class="form-control" name="B" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Name">C</label>
+                                    <input type="text" class="form-control" name="C" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Name">D</label>
+                                    <input type="text" class="form-control" name="D" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Name">E</label>
+                                    <input type="text" class="form-control" name="E" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Name">Ответ</label>
+                                    <input type="number" max="5" class="form-control" name="Answer" required>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="box-footer">
+
+
+                            <button type="submit" onclick="bass()" class="btn bg-olive margin"><span class="fa fa-plus"></span> Добавить</button>
+
+
+                        </div>
+
+                    </form>
+                    <!-- /.box-footer -->
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <input type="hidden" id="CreateMessage" value="@ViewBag.Message" />
+
+    <script>
+
+        function Message() {
+
+
+
+            var Message = $("#CreateMessage").val();
+            if (Message == "success") {
+
+
+                toastr["success"]("Успешно: Тест добавлен");
+
+
+            }
+            else if (Message == "error") {
+
+                toastr["error"]("Ошибка: БД:11000");
+            }
+
+        }
+
+        setTimeout(Message, 1000);
+
+    </script>
+
+
+
+
+
+
+
+
+

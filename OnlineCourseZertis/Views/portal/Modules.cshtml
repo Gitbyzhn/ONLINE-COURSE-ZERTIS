@@ -1,0 +1,257 @@
+﻿
+@{
+ 
+    ViewBag.Modules = "active";
+    Layout = "~/Views/Shared/_Layout_portal.cshtml";
+}
+
+
+
+
+
+@section data_table_css{
+    <link rel="stylesheet" href="~/Content/portal/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+
+}
+
+@model  IEnumerable<OnlineCourseZertis.Models.Modules_Property>
+
+
+
+
+<section class="content-header">
+    <h1>
+        Таблица МОДУЛИ
+    </h1>
+ 
+   
+
+
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Modules","portal")"><i class="fa fa-dashboard"></i> Главная</a></li>
+
+        <li class="active">                     МОДУЛИ</li>
+    </ol>
+
+    @*<span class="ChoosedNews" id="ChooseNewsTitle">ВИДЕО УРОК</span>*@
+
+    <div class="control_data_table">
+        <a href="@Url.Action("createModule","portal")" class="btn btn-success"> + <span class="fa fa-file-movie-o" style="font-size: 16px;"> Создать Модуль</span> </a>
+
+        @*<a href="" class="btn btn-info right" margin-right:20px" id="OpenNews"> <span class="fa fa-sign-in" style="font-size: 16px;"> Открыть</span> </a>*@
+
+
+      <div class="dropdown" style="float:right">
+
+        <a class="dropdown-toggle btn btn-success" data-toggle="dropdown" href="#" aria-expanded="false">
+            @ViewBag.language <span class="caret"></span>
+        </a>
+
+
+
+        <ul class="dropdown-menu" style="left: -111px;">
+            <li><a href="@Url.Action("Modules","portal",new { language="kz"})">Қазақ</a> </li>
+            <li><a href="@Url.Action("Modules","portal",new { language="ru"})">Руский</a></li>
+            <li><a href="@Url.Action("Modules","portal",new { language="uz"})">O'zbek</a></li>
+            <li><a href="@Url.Action("Modules","portal",new { language="kr"})">Кыргыз</a></li>
+            <li><a href="@Url.Action("Modules","portal",new { language="en"})">English</a></li>
+            <li><a href="@Url.Action("Modules","portal",new { language="tr"})">Türk</a></li>
+        </ul>
+
+    </div>
+
+        @*<li >
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="true">
+                Dropdown <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+            </ul>
+        </li>*@
+    </div>
+
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+
+        <div class="col-xs-12">
+
+            <div class="box" style="margin-top:20px">
+
+                <!-- /.box-header -->
+                <div class="box-body">
+
+
+
+
+
+                    <table id="data_table" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+
+                                <th>Id</th>
+                                <th>Название</th>
+                                <th>Уровень</th>
+                                <th>Изменить</th>
+                             
+                               
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                            @if (Model.Count() > 0)
+                            {
+
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+
+
+                                        <td>@item.MId</td>
+
+                                        <td>
+                                            @item.Titile
+
+
+
+
+
+                                        </td>
+                                        <td>
+
+
+                                     
+                                            @if (item.Modul.Modul_userLevel.FirstOrDefault() != null)
+                                            {
+                                                <span>@item.Modul.Modul_userLevel.FirstOrDefault().LevelId</span>
+
+                                            }
+                                            else
+                                            {
+
+                                                <span>NULL</span>
+                                            }
+
+                                       
+
+                                            @*@if (item.Modul_userLevel.Count > 0)
+                                            {
+                                                foreach (var Modul in item.Modul_userLevel)
+                                                {
+
+                                                    <span>@Modul.LevelId ,</span>
+                                                }
+                                            }*@
+
+                                       
+                                        </td>
+                                 
+                                        <td>
+
+
+
+                                            <a class="btn btn-social-icon btn-facebook" href="@Url.Action("editModule","portal",new { Id=item.MId,language=ViewBag.language})"><i class="fa fa-edit"></i></a>
+
+                                        </td>
+                                        @*<td>
+
+
+                                          
+                                            <a class="btn btn-social-icon btn-google" href="@Url.Action("removevlessons","portal",new { Id=item.Id})"><i class="fa fa-trash-o"></i></a>
+
+                                        </td>*@
+                                    </tr>
+
+                                }
+
+                            }
+
+
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+
+                                <th>Id</th>
+                                <th>Название</th>
+                                <th>Уровень</th>
+                                <th>Изменить</th>
+                              
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+                      
+<script>
+
+  
+
+
+
+    function OpenNews(id) {
+
+        var NewsTitle = $("#Title_" + id).val();
+        var ChooseNewsTitle = $("#ChooseNewsTitle");
+        var OpenNewshref = $("#OpenNews");
+        ChooseNewsTitle.html('');
+        ChooseNewsTitle.append("Id: " + id + " --- " + NewsTitle);
+        OpenNewshref.attr("href", "/portal/newsdetails/" + id);
+
+
+    }
+    function Message() {
+
+        var AddModuleMsg = $("#AddModuleMsg").val();
+        if (AddModuleMsg == "success") {
+            toastr["success"]("Модуль успешно добавлен !!!")
+        }
+        else if (AddModuleMsg == "error") {
+            toastr["warning"]("При обработка произошла ошибка")
+        }
+    }
+
+    setTimeout(Message, 1000);
+
+
+
+</script>
+
+
+
+@section data_table_js{
+    <!-- DataTables -->
+    <script src="~/Content/portal/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/portal/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+}
+
+@section data_table{
+
+    $('#data_table')
+    .addClass('nowrap')
+    .dataTable({
+
+    "language": {
+    "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Russian.json"
+    },
+
+
+    });
+}
+
+
+
+

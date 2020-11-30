@@ -1,0 +1,356 @@
+﻿@using OnlineCourseZertis.Models
+@model OnlineCourseZertis.Models.Test
+
+@{
+
+    Layout = "~/Views/Shared/_LayoutTestandTask.cshtml";
+
+    var setLang = GetUser.TextTests(ViewBag.language);
+}
+
+
+
+
+<link href="~/Content/css/private/firework.css" rel="stylesheet" />
+
+
+
+
+<div class="md-modal md-effect-13" id="modal-007">
+    <div class="md-content">
+        <div class="modal-header" style="font-weight:bold">
+
+
+            <button class="md-close close" style="font-size:40px">&times;</button>
+            <h4 class="mtt_1 modal-title hidden">@setLang.Notbad</h4>
+
+            <h4 class="mtt_2 modal-title hidden">@setLang.Good</h4>
+
+            <h4 class="mtt_3 modal-title hidden">@setLang.Excellent</h4>
+            <h4 class="mtt_3 modal-title ">@setLang.TotalText <span id="totalTest"></span> </h4>
+            
+
+        </div>
+        <div class="modal-body">
+
+      
+            <form role="form" >
+
+                    <div class="center-block mtt_1 hidden" style="width: 200px;">
+                        <input class="knob" id="obtb_1" data-width="200" data-readOnly=true data-cursor="true" data-fgcolor="#ea3336" data-thickness=".3" value="0">
+                    </div>
+                    <div class="center-block mtt_2 hidden" style="width: 200px;">
+                        <input class="knob" id="obtb_2" data-width="200" data-readOnly=true data-cursor="true" data-fgcolor="#ffa000" data-thickness=".3" value="0">
+                    </div>
+                    <div class="center-block mtt_3 hidden" style="width: 200px;">
+                        <input class="knob" id="obtb_3" data-width="200 " data-readOnly=true data-cursor="true" data-fgcolor="#1abc9c" data-thickness=".3" value="0">
+                    </div>
+
+                </form>
+            
+
+           
+        </div>
+        <div class="modal-footer">
+
+
+            <a href="@Url.Action("AllVideos", "Learning",new { language=ViewBag.language})" class="btn btn-default col-xs-12 col-md-5" style="margin-top:15px">@setLang.ListVideos </a>
+
+
+            @if (ViewBag.Ids != null)
+            {  <a href="@Url.Action("Videolesson", "Learning", new { Id = ViewBag.Ids, language = ViewBag.language})" class="btn btn-success mtt_2 mtt_3 hidden col-xs-12 col-md-5" style="margin-top:15px">@setLang.NextVideo  →</a> }
+            
+            else if (ViewBag.Quiz == 1)
+            {
+
+                <a href="@Url.Action("Quiz", "Learning",new { language=ViewBag.language})" class="btn btn-default col-xs-12 col-md-5 hidden" id="QuizBtn" style="margin-top:15px">@setLang.QuizText </a>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="md-overlay pyro">
+
+    <div class="before hidden firework" ></div>
+    <div class="after hidden firework"></div>
+
+</div>
+
+
+
+<div class="col-sm-8 col-md-9">
+
+    <header class="main-box-header clearfix" style="margin-bottom:20px;margin-top:10px">
+        <h2 style="font-weight:900 !important">Тест: @ViewBag.VideoName</h2>
+    </header>
+
+
+    <div class="main-box clearfix " style="padding:20px">
+
+
+
+
+
+        <div class="col-xs-12 col-md-8 col-lg-9">
+            <div class="progress" style="margin-top:10px">
+                <div style="width: 0% ;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="84" role="progressbar" class="progress-bar" id="progressbar">
+
+                </div>
+
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-4 col-lg-3">
+            <span style="font-weight:bold;color:#03a9f4;float:right">
+                <span id="demo">1</span> /
+                <span>@ViewBag.CountTest</span>
+            </span>
+
+        </div>
+
+
+
+
+
+
+
+    </div>
+
+    <div class="main-box-body clearfix">
+
+
+
+        <div id="TestGet">
+
+
+
+            <div class="md-content ">
+                <div class="modal-header">
+
+                    <h4 style="font-weight: bold" class="modal-title">@Model.Question</h4>
+
+
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        @if (Model.A != null)
+                        {
+                            <div class="radio">
+                                <input type="radio" name="optionsRadios_@Model.Id" id="optionsRadios1_@Model.Id" onclick="okt(@Model.Answer,@Model.Id)">
+                                <label style="font-weight:600" for="optionsRadios1_@Model.Id">
+                                    @Model.A
+                                </label>
+                            </div>
+                        }
+                        @if (Model.B != null)
+                        {
+
+                            <div class="radio">
+                                <input type="radio" name="optionsRadios_@Model.Id" id="optionsRadios2_@Model.Id" onclick="okt(@Model.Answer,@Model.Id)">
+                                <label style="font-weight:600" for="optionsRadios2_@Model.Id">
+                                    @Model.B
+                                </label>
+                            </div>
+                        }
+                        @if (Model.C != null)
+                        {
+
+                            <div class="radio">
+                                <input type="radio" name="optionsRadios_@Model.Id" id="optionsRadios3_@Model.Id" onclick="okt(@Model.Answer,@Model.Id)">
+                                <label style="font-weight:600" for="optionsRadios3_@Model.Id">
+                                    @Model.C
+                                </label>
+                            </div>
+                        }
+
+                        @if (Model.D != null)
+                        {
+
+                            <div class="radio">
+                                <input type="radio" name="optionsRadios_@Model.Id" id="optionsRadios4_@Model.Id" onclick="okt(@Model.Answer,@Model.Id)">
+                                <label style="font-weight:600" for="optionsRadios4_@Model.Id">
+                                    @Model.D
+                                </label>
+                            </div>
+                        }
+
+                        @if (Model.E != null)
+                        {
+                            <div class="radio">
+                                <input type="radio" name="optionsRadios_@Model.Id" id="optionsRadios5_@Model.Id" onclick="okt(@Model.Answer,@Model.Id)">
+                                <label style="font-weight:600" for="optionsRadios5_@Model.Id">
+                                    @Model.E
+                                </label>
+                            </div>
+                        }
+                 
+                    </form>
+                </div>
+                @if (User.Identity.Name == "+7-702-851-5565")
+                {
+
+                    <span>@Model.Answer</span>
+                }
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+        <button class="md-trigger btn btn-success  hidden" id="rezult" data-modal="modal-007" >@setLang.ResultTest </button>
+        <button class="md-trigger btn btn-primary hidden" id="retest" onClick="window.location.reload()" >@setLang.RepeatTest </button>
+
+
+        
+
+           
+
+          
+
+
+
+
+    </div>
+
+    <input type="hidden" id="JT" value="@ViewBag.CountTest" />
+    <input type="hidden" id="KB" value="0" />
+    <input type="hidden" id="TB" value="0" />
+    <input type="hidden" id="CurrentTst" value="0" />
+
+
+    <script>
+
+
+        function okt(aw, id) {
+
+
+            var tb = document.getElementById('TB').value;
+            var CurrentTst = document.getElementById('CurrentTst').value;
+            var obsht = parseInt($("#JT").val());
+            var NxtTest = false;
+            var resultGraph = 1;
+
+            CurrentTst++;
+
+
+            document.getElementById('CurrentTst').value = CurrentTst;
+            document.getElementById("demo").innerHTML = CurrentTst;
+            $("#progressbar").width((CurrentTst*100) / @ViewBag.CountTest+'%');
+
+
+            if(CurrentTst>=obsht)
+            {
+                NxtTest = true;
+            }
+
+
+            if (document.getElementById("optionsRadios1_" + id).checked) {
+
+                if (aw == 1) {
+                    tb++;
+                    $("#TB").val(tb);
+                }
+            }
+            else if (document.getElementById("optionsRadios2_" + id).checked) {
+                if (aw == 2) {
+                    tb++;
+                    $("#TB").val(tb);
+
+                }
+
+            }
+            else if (document.getElementById('optionsRadios3_' + id).checked) {
+                if (aw == 3) {
+                    tb++;
+                    $("#TB").val(tb);
+
+
+                }
+
+
+            }
+            else if (document.getElementById('optionsRadios4_' + id).checked) {
+                if (aw == 4) {
+                    tb++;
+                    $("#TB").val(tb);
+                }
+
+
+            }
+            else if (document.getElementById('optionsRadios5_' + id).checked) {
+
+                if (aw == 5) {
+                    tb++;
+                    $("#TB").val(tb);
+                }
+
+            }
+
+
+            if( NxtTest == false)
+            {
+                //--------Next for Test
+                $('#TestGet').load('@Url.Action("TestGet", "Learning")?Id='+id+'&LessonId='+@Model.LessonId)
+            }
+            else{
+                $('#TestGet').addClass("hidden");
+                //--------Result for Test
+                var TB = $("#TB").val();
+                var JT = $("#JT").val();
+                var KB = (TB * 100) / JT;
+                var KBB = parseInt(KB);
+                $("#KB").val(KBB);
+                $("#rezult").removeClass("hidden");
+
+              
+                $("#ptest").removeClass("hidden");
+                $("#rezult").click();
+                
+                var resultGraph = true;
+              
+                document.getElementById("totalTest").innerHTML = KBB;
+
+                var i = 0;
+                if (KBB < 75)
+                {   
+                    $(".mtt_1").removeClass("hidden");
+                    $("#obtb_1").val(KBB);
+                    $("#retest").removeClass("hidden");
+                }
+                else if (KBB >=75 && KBB < 90) {
+                    
+                    $(".mtt_2").removeClass("hidden");
+                    $("#obtb_2").val(KBB);
+                }
+                else { $(".mtt_3").removeClass("hidden");
+                   
+                
+                     $("#obtb_3").val(KBB);
+                }
+               
+                if(KBB>=75)
+                {
+                    $("#QuizBtn").removeClass("hidden");
+                    
+                }
+
+
+
+                var url = '@Url.Action("TestV", "Learning")';
+                $.getJSON(url, { id: @Model.LessonId, KB: KBB }, function () {
+                });
+
+            }
+        }
+    </script>
+
+
+</div>
+

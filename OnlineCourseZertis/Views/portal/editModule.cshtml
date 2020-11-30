@@ -1,0 +1,205 @@
+﻿@model OnlineCourseZertis.Models.ModuleCs
+@{
+    ViewBag.Title = "creategroup";
+    ViewBag.creategroup = "active";
+    Layout = "~/Views/Shared/_Layout_portal.cshtml";
+}
+
+
+
+<script>
+    function fileCheck(obj) {
+        var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+        if ($.inArray($(obj).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+            alert("Only '.jpeg','.jpg', '.png', '.gif', '.bmp' formats are allowed.");
+        }
+    }
+    function showImage() {
+        document.getElementById('modelimage').style.display = 'none';
+    }
+    function PreviewImage(no) {
+        var oFReader = new FileReader();
+
+        var sizefile = document.getElementById("img" + no).files[0].size;
+        if (sizefile < 5000000) {
+            oFReader.readAsDataURL(document.getElementById("img" + no).files[0]);
+
+            oFReader.onload = function (oFREvent) {
+                document.getElementById("uploadPreview" + no).src = oFREvent.target.result;
+            };
+        }
+        else {
+            document.getElementById("img" + no).value = "";
+            toastr["error"]("Ошибка: Изображения должен менее 4мб  ");
+        }
+
+    }
+
+
+</script>
+
+
+<section class="content-header">
+    <h1>
+        Изменить Модуль
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>ВИДЕО УРОКИ</a></li>
+        <li><a href="#">Создать Видео Урок</a></li>
+
+    </ol>
+</section>
+
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+
+        <div class="col-xs-12">
+
+            <!-- Box Comment -->
+            <div class="box box-widget">
+
+
+                <form method="post" enctype="multipart/form-data"  style="max-width:700px;margin: 0 auto;">
+                    <div class="box-body">
+
+
+                        <div class="col-xs-12">
+
+
+                            <input type="hidden" value="@Model.ModuleId" name="ModuleId" />
+
+                            <label for="img1" class="thumbnail">
+
+                                @if (Model.Image != null)
+                                {
+                                    <img id="uploadPreview1" class="img-responsive pad" src="@Url.Content(Model.Image)" alt="Photo" style="cursor: pointer;width:300px">
+                                }
+                                else
+                                {
+                                    <img id="uploadPreview1" class="img-responsive pad" src="~/Images/iconimg.png" alt="Photo" style="cursor: pointer;width:300px">
+
+                                }
+
+
+
+                            </label>
+
+                            <input id="img1" type="file" name="img1" onchange="PreviewImage(1);" style="display: none;">
+
+                            <div class="col-xs-12 estyle hidden" id="errorimg1">Пожалуйста добавьте фото</div>
+
+
+
+                        </div>
+
+
+
+
+
+                        <div class="col-xs-12 col-md-12">
+
+
+
+
+
+                            <div class="form-group">
+                                <label for="Name">Название на казахском </label>
+                                <input type="text" class="form-control" value="@Model.NameKZ" name="NameKZ" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="Name">Название на русском</label>
+                                <input type="text" class="form-control" value="@Model.NameRU" name="NameRU" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="Name">Название на узбекском</label>
+                                <input type="text" class="form-control" value="@Model.NameUZ" name="NameUZ">
+                            </div>
+                            <div class="form-group">
+                                <label for="Name">Название на кыргызском</label>
+                                <input type="text" class="form-control" value="@Model.NameKR" name="NameKR">
+                            </div>
+                            <div class="form-group">
+                                <label for="Name">Название на английском</label>
+                                <input type="text" class="form-control" value="@Model.NameEN" name="NameEN">
+                            </div>
+                            <div class="form-group">
+                                <label for="Name">Название на турецком</label>
+                                <input type="text" class="form-control" value="@Model.NameTR" name="NameTR">
+                            </div>
+
+
+
+
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">Уровень</span>
+                                <select type="text" class="form-control" name="LevelId" aria-describedby="basic-addon1" required>
+
+
+                                    @if (Model.LevelId == 0)
+                                    {
+                                        <option value="0">1.Бесплатный</option>
+                                    }
+                                    @if (Model.LevelId == 1)
+                                    {
+                                        <option value="1">2.Премиум A</option>
+                                    }
+                               
+                                    <option value="0">1.Бесплатный</option>
+                                    <option value="1">2.Премиум A</option>
+
+
+                                </select>
+                            </div>
+
+
+
+
+
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="box-footer">
+
+
+                        <button type="submit" onclick="bass()" class="btn bg-olive margin"><span class="fa fa-edit"></span> Изменить</button>
+
+
+                    </div>
+
+                </form>
+                <!-- /.box-footer -->
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+<input type="hidden" id="EditModuleMsg" value="@ViewBag.EditModuleMsg" />
+
+
+
+
+<script>
+
+
+    function Message() {
+
+        var EditModuleMsg = $("#EditModuleMsg").val();
+        if (EditModuleMsg == "success") {
+            toastr["success"]("Модуль успешно изменен !!!")
+        }
+        else if (EditModuleMsg == "error") {
+            toastr["warning"]("При обработка произошла ошибка")
+        }
+    }
+
+    setTimeout(Message, 1000);
+
+</script>

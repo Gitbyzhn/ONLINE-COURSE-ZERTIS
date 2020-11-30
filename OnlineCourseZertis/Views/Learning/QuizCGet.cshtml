@@ -1,0 +1,83 @@
+﻿@using OnlineCourseZertis.Models
+@model Quiz_C
+@{
+    Layout = null;
+
+    var setLang = GetUser.Quiz(ViewBag.language);
+}
+
+
+
+
+
+
+
+
+<div class="md-content" id="md-content">
+
+    @if (Model != null)
+    {
+        <div class="modal-header">
+
+            <h4 style="font-weight: bold" class="modal-title">@Model.Quiz_Title</h4>
+
+
+        </div>
+        <div class="modal-body">
+         
+        
+            <div class="form-group">
+
+                <textarea maxlength="180" id="AnswerTextArea" class="form-control"  rows="3">@Model.User_Answer</textarea>
+
+            </div>
+
+
+            <div id="Quiz_MsgError" class="hidden">
+
+
+            </div>
+
+            <div class="prevnext_btn">
+
+
+
+             
+               <a href="#" class="previous" style="float:left" onclick="prev_quiz(@Model.QId)"><span>← @setLang.Prev</span></a>
+                
+
+                @if (Model.next == true)
+                {
+                    <a href="#" class="next" style="float:right" id="next_quiz_a" onclick="quiz(@Model.QId,@Model.Q_content_Id,0)"><span>@setLang.Next →</span></a>
+                }
+                else
+                {
+                    <a href="#" class="next" style="float:right" id="next_quiz_a" onclick="quiz(@Model.QId,@Model.Q_content_Id,1)"><span>@setLang.Complete  →</span></a>
+
+                }
+
+
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+                }
+
+
+</div>
+
+
+
+
+

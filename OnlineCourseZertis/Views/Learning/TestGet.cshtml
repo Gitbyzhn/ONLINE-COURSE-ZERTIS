@@ -1,0 +1,87 @@
+﻿@model OnlineCourseZertis.Models.Test
+@{ 
+
+    Layout = null;
+}
+
+
+
+
+<div class="md-content ">
+@if (Model != null)
+{
+    <div class="modal-header">
+     
+        <h4 style="font-weight: bold" class="modal-title">@Model.Question</h4>
+
+
+    </div>
+    <div class="modal-body">
+        <form role="form">
+
+           
+                @if(Model.A != null)
+                {
+                    <div class="radio">
+                        <input type="radio" name="optionsRadios_@Model.Id" id="optionsRadios1_@Model.Id" onclick="okt(@Model.Answer,@Model.Id)">
+                        <label style="font-weight:600" for="optionsRadios1_@Model.Id">
+                            @Model.A
+                        </label>
+                    </div>
+                }
+                @if(Model.B != null)
+                {
+
+                    <div class="radio">
+                        <input type="radio" name="optionsRadios_@Model.Id" id="optionsRadios2_@Model.Id" onclick="okt(@Model.Answer,@Model.Id)">
+                        <label style="font-weight:600" for="optionsRadios2_@Model.Id">
+                            @Model.B
+                        </label>
+                    </div>
+                }
+               @if(Model.C != null)
+                {
+
+                    <div class="radio">
+                        <input type="radio" name="optionsRadios_@Model.Id" id="optionsRadios3_@Model.Id" onclick="okt(@Model.Answer,@Model.Id)">
+                        <label style="font-weight:600" for="optionsRadios3_@Model.Id">
+                            @Model.C
+                        </label>
+                    </div>
+                }
+
+                @if(Model.D != null)
+                {
+
+                    <div class="radio">
+                        <input type="radio" name="optionsRadios_@Model.Id" id="optionsRadios4_@Model.Id" onclick="okt(@Model.Answer,@Model.Id)">
+                        <label style="font-weight:600" for="optionsRadios4_@Model.Id">
+                            @Model.D
+                        </label>
+                    </div>
+                }
+
+                @if(Model.E != null)
+                {
+                    <div class="radio">
+                        <input type="radio" name="optionsRadios_@Model.Id" id="optionsRadios5_@Model.Id" onclick="okt(@Model.Answer,@Model.Id)">
+                        <label style="font-weight:600" for="optionsRadios5_@Model.Id">
+                            @Model.E
+                        </label>
+                    </div>
+                }
+
+            
+            @if (User.Identity.Name == "+7-702-851-5565")
+                {
+
+                <span>@Model.Answer</span>
+            }
+           
+        </form>
+    </div>
+}
+
+
+</div>
+

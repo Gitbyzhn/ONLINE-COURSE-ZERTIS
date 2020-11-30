@@ -1,0 +1,32 @@
+﻿ .has-error .form-control {
+        border-color: #e7ebee !important;
+    }
+
+    .colorerror {
+        color: #dd191d;
+    }
+
+    .has-error > span {
+        color: #dd191d;
+    }
+.createbut {
+float:right;margin-top:30px;
+margin-left:20px;
+}
+
+.iferror {
+float:left;
+font-weight:600;
+color:red;
+font-size:1em;
+}
+.iferror ul {
+    list-style-type:none !important;
+}
+#table-example_wrapper>.DTTT{
+    display:none;
+    visibility:hidden;
+}
+.validation-summary-errors > ul {
+list-style:none !important;
+}

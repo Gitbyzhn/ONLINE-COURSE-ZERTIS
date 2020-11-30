@@ -1,0 +1,618 @@
+﻿
+@using OnlineCourseZertis.Models
+
+@model  IEnumerable<OnlineCourseZertis.Models.Premium>
+
+@{
+    var setLang = GetUser.language(ViewBag.language);
+    var UserInfo = GetUser.Info(User.Identity.Name);
+
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Онлайн курс | ZERTIS</title>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/bootstrap/bootstrap.min.css" />
+
+    <!-- RTL support - for demo only -->
+    <script src="~/Content/js/demo-rtl.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="~/Content/css/libs/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/libs/nanoscroller.css" />
+
+
+
+    <!-- global styles -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/compiled/theme_styles.css" />
+    <link href="~/Content/css/private/Learning.css" rel="stylesheet" />
+
+    <link rel="apple-touch-icon" sizes="76x76" href="~/Content/img/favicon.ico">
+    <link rel="icon" type="image/png" href="~/Content/img/favicon.ico">
+    <!-- google font libraries -->
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300 | Titillium+Web:200,300,400' rel='stylesheet' type='text/css'>
+
+
+</head>
+<body class="pace-done" oncontextmenu="return false">
+    <div id="theme-wrapper">
+        <header class="navbar" id="header-navbar">
+            <div class="container navcontainerr">
+                <a href="@Url.Action("Modules", "Learning")" id="logo" class="navbar-brand">
+                    <img src="~/Content/img/logo.png" alt="" class="normal-logo logo-white" />
+                    <img src="~/Content/img/logo.png" alt="" class="normal-logo logo-black" />
+                    <img src="~/Content/img/logo.png" alt="" class="small-logo hidden-xs hidden-sm hidden" />
+
+                </a>
+
+
+                <div class="clearfix">
+                    <button class="navbar-toggle visible-xs" data-target=".navbar-ex1-collapse" data-toggle="collapse" type="button">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="fa fa-bars"></span>
+                    </button>
+                    <div class="nav-no-collapse pull-left" id="header-nav">
+
+                    </div>
+
+
+                    <div class="nav-no-collapse pull-right" id="header-nav">
+                        <ul class="nav navbar-nav pull-right">
+
+                            <li class="hidden-xs purchasebtnmenu">
+
+
+                                <a href="@Url.Action("premium","User")">
+                                    <i class="fa fa-archive"></i> Покупка
+
+                                </a>
+
+                            </li>
+
+                            <li class="dropdown profile-dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+
+                                    @if (UserInfo.Image != null)
+                                    {
+                                        <img src="@Url.Content(UserInfo.Image)" alt="" />
+                                    }
+                                    else
+                                    {
+                                        <img src="~/Images/Notimg.png" alt="" />
+                                    }
+
+
+
+
+                                    <span class="hidden-xs">@UserInfo.Name</span> <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+
+
+                                    <li><a href="@Url.Action("profile","User")"><i class="fa fa-user"></i>Мой профиль</a></li>
+
+                                    <li><a href="@Url.Action("favorites","User")"><i class="fa fa-star"></i>@setLang.Favorite</a></li>
+
+
+
+
+
+                                </ul>
+                            </li>
+                            <li>
+
+                                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <a class="btn" href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-power-off"></i></a>
+                                }
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div id="page-wrapper" class="container">
+            <div class="row">
+                <div id="nav-col" class="visible-xs">
+                    <section id="col-left" class="col-left-nano">
+                        <div id="col-left-inner" class="col-left-nano-content">
+
+                            <div class="navbar-collapse navbar-ex1-collapse collapse " id="sidebar-nav" style="">
+                                <ul class="nav nav-pills nav-stacked">
+
+
+
+                                    <li>
+                                        <a href="@Url.Action("profile","User")">
+                                            <i class="fa fa-user"></i>
+                                            <span>Мой профиль</span>
+
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="@Url.Action("Modules","Learning")">
+                                            <i class="fa fa-list-ul"></i>
+                                            <span>@setLang.Modules</span>
+
+                                        </a>
+                                    </li>
+                                    <li>
+
+                                        <a href="@Url.Action("AllVideos","Learning")">
+
+                                            <i class="fa fa-film"></i>
+                                            <span>@setLang.Lessons</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="@Url.Action("favorites","User")">
+
+                                            <i class="fa fa-star "></i>
+                                            <span>@setLang.Favorite</span>
+
+                                        </a>
+                                    </li>
+
+
+                                    <li>
+                                        <a href="@Url.Action("Useful_services","Learning")">
+
+                                            <i class="fa fa-info"></i>
+                                            <span>@setLang.UsefulServices</span>
+                                        </a>
+                                    </li>
+
+
+                                    <li>
+
+                                        <a href="@Url.Action("certificates","User")">
+
+                                            <i class="fa fa-certificate"></i>
+                                            <span>Сертификаты</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+
+                                        <a href="@Url.Action("premium","User")">
+
+                                            <i class="fa fa-archive"></i>
+                                            <span>Покупка</span>
+                                        </a>
+                                    </li>
+
+
+
+
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+
+                <div id="content-wrapper" style="margin-left:0px !important">
+                    <div class="row" style="margin-bottom: 20px">
+                        <div class="col-lg-12">
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                </div>
+                            </div>
+
+                            <div class="row" id="user-profile">
+
+                                <div class="main-box" style="max-width:980px;margin:0px auto 15px auto" id="main-cont">
+                                    <div class="main-box clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-2 bb hidden-xs">
+
+
+
+                                            <a href="@Url.Action("profile","User")">
+
+                                                <div class="lbp">
+                                                    <i class="fa fa-user fa-2x"></i>
+                                                    <br />
+                                                    <span>Мой профиль</span>
+                                                </div>
+
+
+                                            </a>
+                                            <a href="@Url.Action("Modules","Learning")">
+
+                                                <div class="lbp">
+                                                    <i class="fa fa-list-ul fa-2x"></i>
+                                                    <br />
+                                                    <span>@setLang.Modules</span>
+                                                </div>
+
+
+                                            </a>
+                                            <a href="@Url.Action("AllVideos","Learning")">
+                                                <div class="lbp">
+                                                    <i class="fa fa-film fa-2x"></i>
+                                                    <br />
+                                                    <span>@setLang.Lessons</span>
+                                                </div>
+                                            </a>
+
+                                            <a href="@Url.Action("favorites","User")">
+                                                <div class="lbp">
+                                                    <i class="fa fa-star fa-2x "></i>
+                                                    <br />
+                                                    <span>@setLang.Favorite</span>
+
+                                                </div>
+                                            </a>
+
+                                            <a href="@Url.Action("Useful_services","Learning")">
+                                                <div class="lbp">
+                                                    <i class="fa fa-info fa-2x "></i>
+                                                    <br />
+                                                    <span>@setLang.UsefulServices</span>
+
+                                                </div>
+                                            </a>
+
+                                            <a href="@Url.Action("certificates","User")">
+
+                                                <div class="lbp">
+                                                    <i class="fa fa-certificate fa-2x" style="color:#ffc107"></i>
+                                                    <br />
+                                                    <span>Сертификаты</span>
+                                                </div>
+
+
+                                            </a>
+
+
+                                            <a href="@Url.Action("premium","User")">
+
+                                                <div class="lbp">
+                                                    <i class="fa fa-archive fa-2x" style="color:#ffc107"></i>
+                                                    <br />
+                                                    <span>Покупка</span>
+                                                </div>
+
+
+                                            </a>
+
+                                        </div>
+
+                                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12 main-box-l">
+
+                                            <header class="main-box-header clearfix header-title-l">
+                                                <h2 style="font-weight:900 !important">Выбери свой вариант</h2>
+                                            </header>
+
+
+
+
+                                            @if (Model.Count() > 0)
+                                            {
+
+                                                var premiumA = Model.Where(e => e.Id == 1).First();
+                                                var premiumB = Model.Where(e => e.Id == 2).First();
+                                                var premiumC = Model.Where(e => e.Id == 3).First();
+
+                                                var User_premiumA = premiumA.User_Premium.Where(e => e.UserId == UserInfo.Id).FirstOrDefault();
+
+                                                var User_premiumB = premiumB.User_Premium.Where(e => e.UserId == UserInfo.Id).FirstOrDefault();
+
+                                                var User_premiumC = premiumC.User_Premium.Where(e => e.UserId == UserInfo.Id).FirstOrDefault();
+
+
+
+                                                <div class="modul-premium">
+
+
+                                                    <div class="block-premium col-xs-12 col-mdL-3 hvr-glow">
+                                                        <div class="top">
+
+
+                                                            <span class="converse">ZERTIS</span>
+                                                            <br />
+                                                            <span class="converse">ЭКОНОМ</span>
+
+
+                                                        </div>
+                                                        <div class="middle">
+                                                            <img src="@Url.Content(premiumA.Image)" alt="pic" />
+                                                        </div>
+                                                        <div class="bottom">
+
+
+                                                            <div class="style">
+                                                                <span><i class="fa fa-check" aria-hidden="true" style="color:#b5750a"></i> Полный видео курс </span>
+                                                                <br />
+
+
+                                                                <span><i class="fa fa-check" aria-hidden="true" style="color:#b5750a"></i> Авторская методика </span>
+
+                                                                <br />
+                                                                <span><i class="fa fa-check" aria-hidden="true" style="color:#b5750a"></i>Контакты всех поставщиков </span>
+                                                                <br />
+                                                                <span><i class="fa fa-check" aria-hidden="true" style="color:#b5750a"></i> Сертификат </span>
+
+                                                            </div>
+
+                                                            <div class="col-xs-12">
+
+                                                                <div class="price">@premiumA.Price тг</div>
+
+
+
+
+                                                                @if (User_premiumA == null)
+                                                                {
+
+                                                                    <form method="post">
+
+                                                                        <button type="submit" class="btn btn-success btnbuypremium"> Купить</button>
+                                                                        <input type="hidden" value="1" name="premiumID" />
+
+                                                                    </form>
+                                                                }
+                                                                else if (!User_premiumA.buy)
+                                                                {
+
+                                                                    <form method="post">
+
+                                                                        <button type="submit" class="btn btn-success btnbuypremium"> Купить</button>
+                                                                        <input type="hidden" value="1" name="premiumID" />
+
+                                                                    </form>
+                                                                }
+                                                                else if (User_premiumA.buy)
+                                                                {
+
+                                                                    <button type="submit" class="btn btn-success disabled btnbuypremium" style="color:black"> Куплено</button>
+                                                                }
+
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <div class="block-premium col-xs-12 col-mdL-3 hvr-glow">
+                                                        <div class="top">
+                                                            <span class="converse">ZERTIS</span>
+                                                            <br />
+                                                            <span class="converse">СТАНДАРТ</span>
+
+                                                        </div>
+                                                        <div class="middle">
+                                                            <img src="@Url.Content(premiumB.Image)" alt="pic" />
+                                                        </div>
+                                                        <div class="bottom">
+
+
+                                                            <div class="style">
+                                                                <span><i class="fa fa-check" aria-hidden="true" style="color:#b5750a"></i> Полный видео курс </span>
+                                                                <br />
+
+
+                                                                <span><i class="fa fa-check" aria-hidden="true" style="color:#b5750a"></i> Авторская методика </span>
+
+                                                                <br />
+                                                                <span><i class="fa fa-check" aria-hidden="true" style="color:#b5750a"></i>Контакты всех поставщиков </span>
+                                                                <br />
+                                                                <span><i class="fa fa-check" aria-hidden="true" style="color:#b5750a"></i> Сертификат </span>
+                                                                <br />
+                                                                <span><i class="fa fa-check" aria-hidden="true" style="color:#b5750a"></i> 10 книг по гидропонике</span>
+
+                                                                <br />
+                                                                <span><i class="fa fa-check" aria-hidden="true" style="color:#b5750a"></i> Техподдержка</span>
+                                                            </div>
+
+
+                                                            <div class="col-xs-12">
+
+
+                                                                <div class="price">@premiumB.Price тг</div>
+
+                                                                @*<div class="price">$50.00 <span class="old-price">$75.00</span></div>*@
+
+
+
+
+                                                                @if (User_premiumB == null)
+                                                                {
+
+                                                                    <form method="post">
+
+                                                                        <button type="submit" class="btn btn-success btnbuypremium"> Купить</button>
+                                                                        <input type="hidden" value="2" name="premiumID" />
+
+                                                                    </form>
+                                                                }
+                                                                else if (!User_premiumB.buy)
+                                                                {
+
+                                                                    <form method="post">
+
+                                                                        <button type="submit" class="btn btn-success btnbuypremium"> Купить</button>
+                                                                        <input type="hidden" value="2" name="premiumID" />
+
+                                                                    </form>
+                                                                }
+                                                                else if (User_premiumB.buy)
+                                                                {
+
+                                                                    <button type="submit" class="btn btn-success disabled btnbuypremium" style="color:black"> Куплено</button>
+                                                                }
+
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <div class="block-premium col-xs-12 col-mdL-3 hvr-glow">
+                                                        <div class="top">
+                                                            <span class="converse">ZERTIS</span>
+                                                            <br />
+                                                            <span class="converse">РАСШИРЕННЫЙ</span>
+                                                        </div>
+                                                        <div class="middle">
+                                                            <img src="@Url.Content(premiumC.Image)" alt="pic" />
+                                                        </div>
+                                                        <div class="bottom">
+
+
+                                                            <div class="style">
+                                                                <span><i class="fa fa-check" aria-hidden="true" style="color:#b5750a"></i> Полный видео курс </span>
+                                                                <br />
+
+
+                                                                <span><i class="fa fa-check" aria-hidden="true" style="color:#b5750a"></i> Авторская методика </span>
+
+                                                                <br />
+                                                                <span><i class="fa fa-check" aria-hidden="true" style="color:#b5750a"></i>Контакты всех поставщиков </span>
+                                                                <br />
+                                                                <span><i class="fa fa-check" aria-hidden="true" style="color:#b5750a"></i> Сертификат </span>
+                                                                <br />
+                                                                <span><i class="fa fa-check" aria-hidden="true" style="color:#b5750a"></i> 10 книг по гидропонике</span>
+                                                                <br />
+                                                                <span><i class="fa fa-check" aria-hidden="true" style="color:#b5750a"></i> Техподдержка с Диасом Тастанбековым</span>
+
+                                                            </div>
+
+
+
+                                                            <div class="col-xs-12">
+                                                                <div class="price">@premiumC.Price тг</div>
+
+                                                                @*<div class="price">$50.00 <span class="old-price">$75.00</span></div>*@
+
+
+
+
+                                                                @if (User_premiumC == null)
+                                                                {
+
+                                                                    <form method="post">
+
+                                                                        <button type="submit" class="btn btn-success btnbuypremium"> Купить</button>
+                                                                        <input type="hidden" value="3" name="premiumID" />
+
+                                                                    </form>
+                                                                }
+                                                                else if (!User_premiumC.buy)
+                                                                {
+
+                                                                    <form method="post">
+
+                                                                        <button type="submit" class="btn btn-success btnbuypremium"> Купить</button>
+                                                                        <input type="hidden" value="3" name="premiumID" />
+
+                                                                    </form>
+                                                                }
+                                                                else if (User_premiumC.buy)
+                                                                {
+
+                                                                    <button type="submit" class="btn btn-success disabled btnbuypremium" style="color:black"> Куплено</button>
+                                                                }
+
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+
+                                            }
+
+
+
+                                        </div>
+
+
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <footer id="footer-bar" class="row">
+                        <p id="footer-copyright" class="col-xs-12">
+                            © @DateTime.Now.Year Онлайн курс | ZERTIS @setLang.Reserved .
+                        </p>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- global scripts -->
+
+
+    <script src="~/Content/js/jquery.js"></script>
+    <script src="~/Content/js/bootstrap.js"></script>
+    <script src="~/Content/js/jquery.nanoscroller.min.js"></script>
+
+
+
+
+    <script src="~/Content/js/demo.js"></script> <!-- only for demo -->
+    <!-- Document Ready Scripts-->
+    <script>
+            $(document).keydown(function (event) {
+                if (event.keyCode == 123) {
+                    return false;
+                }
+                else if ((event.ctrlKey && event.shiftKey && event.keyCode == 73) || (event.ctrlKey && event.shiftKey && event.keyCode == 74)) {
+                    return false;
+                }
+            });
+            $(document).ready(function () {
+            });
+
+            document.onkeydown = function (e) {
+                if (e.ctrlKey &&
+                    (e.keyCode === 67 ||
+                        e.keyCode === 86 ||
+                        e.keyCode === 85 ||
+                        e.keyCode === 117)) {
+                    return false;
+                } else {
+                    return true;
+                }
+            };
+    </script>
+
+
+
+
+
+
+</body>
+</html>

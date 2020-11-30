@@ -1,0 +1,226 @@
+﻿@model OnlineCourseZertis.Models.VideoL
+@{
+    ViewBag.Title = "creategroup";
+    ViewBag.creategroup = "active";
+    Layout = "~/Views/Shared/_Layout_portal.cshtml";
+}
+
+<script>
+    function fileCheck(obj) {
+        var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+        if ($.inArray($(obj).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+            alert("Only '.jpeg','.jpg', '.png', '.gif', '.bmp' formats are allowed.");
+        }
+    }
+    function showImage() {
+        document.getElementById('modelimage').style.display = 'none';
+    }
+    function PreviewImage(no) {
+        var oFReader = new FileReader();
+
+        var sizefile = document.getElementById("img" + no).files[0].size;
+        if (sizefile < 5000000) {
+            oFReader.readAsDataURL(document.getElementById("img" + no).files[0]);
+
+            oFReader.onload = function (oFREvent) {
+                document.getElementById("uploadPreview" + no).src = oFREvent.target.result;
+            };
+        }
+        else {
+            document.getElementById("img" + no).value = "";
+            toastr["error"]("Ошибка: Изображения должен менее 4мб  ");
+        }
+
+    }
+
+
+</script>
+
+
+<section class="content-header">
+    <h1>
+        Изменить Видео Урок
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>ВИДЕО УРОКИ</a></li>
+        <li><a href="#">Создать Видео Урок</a></li>
+
+    </ol>
+</section>
+
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+
+        <div class="col-xs-12 col-md-12 ">
+
+            <!-- Box Comment -->
+            <div class="box box-widget">
+
+
+                <form method="post" enctype="multipart/form-data">
+                    <div class="box-body">
+                        <div class="col-xs-6 col-md-6">
+
+
+                            <input type="hidden" value="@Model.Id" name="Id" />
+
+                            <label for="img1" class="thumbnail">
+
+                                @if (Model.Iconimg != null)
+                                {
+                                    <img id="uploadPreview1" class="img-responsive pad" src="@Url.Content(Model.Iconimg)" alt="Photo" style="cursor: pointer;width:300px">
+                                }
+                                else
+                                {
+                                    <img id="uploadPreview1" class="img-responsive pad" src="~/Images/iconimg.png" alt="Photo" style="cursor: pointer;width:300px">
+
+                                }
+
+
+
+                            </label>
+
+                            <input id="img1" type="file" name="img1" onchange="PreviewImage(1);" style="display: none;">
+
+                            <div class="col-xs-12 estyle hidden" id="errorimg1">Пожалуйста добавьте фото</div>
+
+
+
+                        </div>
+
+
+                        <div class="col-xs-6 col-md-6">
+
+
+                            <label for="img2" class="thumbnail">
+
+                                @if (Model.Iconimg2 != null)
+                                {
+                                    <img id="uploadPreview2" class="img-responsive pad" src="@Url.Content(Model.Iconimg2)" alt="Photo" style="cursor: pointer;width:300px">
+                                }
+                                else
+                                {
+                                    <img id="uploadPreview2" class="img-responsive pad" src="~/Images/iconimg-n.png" alt="Photo" style="cursor: pointer;width:300px">
+
+                                }
+
+                            </label>
+
+                            <input id="img2" type="file" name="img2" onchange="PreviewImage(2);" style="display: none;">
+
+                            <div class="col-xs-12 estyle hidden" id="errorimg2">Пожалуйста добавьте фото</div>
+
+
+
+                        </div>
+
+
+                        <div class="col-xs-12 col-md-12">
+
+                            <select class="form-control" name="language" required>
+
+                                <option selected value="@Model.language">@Model.language</option>
+                                <option disabled>____________</option>
+                                <option value="kz">Қазақ</option>
+                                <option value="ru">Руский</option>
+                                <option value="uz">O'zbek</option>
+                                <option value="kr">Кыргыз</option>
+                                <option value="en">English</option>
+                                <option value="tr">Türk</option>
+                            </select>
+
+
+                            <div class="form-group">
+                                <label for="Name">XId</label>
+                                <input disabled type="number" class="form-control" name="XId" value="@Model.XId">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Name">Название</label>
+                                <input type="text" class="form-control" name="Name" value="@Model.Name" required>
+                            </div>
+
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">Модули</span>
+                                <select type="text" class="form-control" name="ModulId" aria-describedby="basic-addon1" required>
+
+                                    <option selected value="@Model.ModulId">@Model.Modul.Modules_Property.FirstOrDefault().Titile</option>
+
+                                    <option disabled>____________</option>
+
+
+                                    @foreach (var item in ViewBag.Modules)
+                                    {
+                                        <option value="@item.MId">@item.Titile</option>
+                                    }
+                                </select>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="Name">Ссылка</label>
+                                <input type="text" class="form-control" name="Link" value="@Model.Link" required>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="Name">Краткое название </label>
+                                <input type="text" class="form-control" name="ShortT" value="@Model.ShortT" required>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="Name">Видео минут</label>
+                                <input type="number" class="form-control" name="minute" value="@Model.VideoXL.VideoLEMs.FirstOrDefault().minute" required>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="box-footer">
+
+
+                        <button type="submit" class="btn bg-olive margin"><span class="fa fa-edit"></span> Изменить</button>
+
+
+                    </div>
+
+                </form>
+                <!-- /.box-footer -->
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<input type="hidden" id="serverMessage" value="@ViewBag.Message" />
+
+<script>
+
+
+    function Message() {
+
+        var Message = $("#serverMessage").val();
+
+        if (Message == "success") {
+
+
+            toastr["success"]("Успешно: Изменен");
+
+
+        }
+        if (Message == "error") {
+
+            toastr["error"]("Ошибка: БД:11000");
+        }
+    }
+   
+    setTimeout(Message,1000);
+
+
+</script>

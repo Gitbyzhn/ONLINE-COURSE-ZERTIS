@@ -1,0 +1,752 @@
+﻿@using OnlineCourseZertis.Models
+
+@{
+    var setLang =  GetUser.language(ViewBag.language);
+    var UserInfo = GetUser.Info(User.Identity.Name);
+
+    var routeValues = HttpContext.Current.Request.RequestContext.RouteData.Values;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Онлайн курс | ZERTIS</title>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/bootstrap/bootstrap.min.css" />
+
+    <!-- RTL support - for demo only -->
+    <script src="~/Content/js/demo-rtl.js"></script>
+    <script src="//code.jivosite.com/widget/ikuMiOE6H2" async></script>
+    <!--
+    If you need RTL support just include here RTL CSS file <link rel="stylesheet" type="text/css" href="css/libs/bootstrap-rtl.min.css" />
+    And add "rtl" class to <body> element - e.g. <body class="rtl">
+    -->
+    <!-- libraries -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/libs/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/libs/nanoscroller.css" />
+
+
+    <!-- global styles -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/compiled/theme_styles.css" />
+    <link href="~/Content/css/private/Learning.css" rel="stylesheet" />
+
+    <!-- this page specific styles -->
+    <link rel="stylesheet" href="~/Content/css/libs/morris.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/libs/nifty-component.css" />
+    <!-- Favicon -->
+
+
+    <link rel="apple-touch-icon" sizes="76x76" href="~/Content/img/favicon.ico">
+    <link rel="icon" type="image/png" href="~/Content/img/favicon.ico">
+    <!-- google font libraries -->
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300 | Titillium+Web:200,300,400' rel='stylesheet' type='text/css'>
+
+
+
+
+
+</head>
+<body class="pace-done" oncontextmenu="return false">
+    <div id="theme-wrapper">
+        <header class="navbar" id="header-navbar">
+            <div class="container navcontainerr">
+                <a href="@Url.Action("Modules", "Learning",new { language= ViewBag.language})" id="logo" class="navbar-brand">
+                    <img src="~/Content/img/logo.png" alt="" class="normal-logo logo-white" />
+                    <img src="~/Content/img/logo.png" alt="" class="normal-logo logo-black" />
+                    <img src="~/Content/img/logo.png" alt="" class="small-logo hidden-xs hidden-sm hidden" />
+
+                </a>
+                
+
+                <div class="clearfix">
+                    <button class="navbar-toggle visible-xs" data-target=".navbar-ex1-collapse" data-toggle="collapse" type="button">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="fa fa-bars"></span>
+                    </button>
+                    <div class="nav-no-collapse pull-left" id="header-nav">
+
+                    </div>
+
+
+                    <div class="nav-no-collapse pull-right" id="header-nav">
+                        <ul class="nav navbar-nav pull-right">
+
+
+                            <li class="dropdown profile-dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    @if (ViewBag.language != null)
+                                    {
+                                        <span style="text-transform:uppercase">  @ViewBag.language</span>
+                                    }
+                                    else
+                                    {
+                                        <span>  RU</span>
+                                    }
+
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right lang-menu">
+
+                                    <li><a href="@Url.Action(routeValues["action"].ToString(),routeValues["controller"].ToString(),new { language = "kz", Id = routeValues["id"]})"> KZ</a></li>
+                                    <li><a href="@Url.Action(routeValues["action"].ToString(),routeValues["controller"].ToString(),new { language = "ru", Id = routeValues["id"]})"> RU</a></li>
+                                   
+
+                                </ul>
+                            </li>
+
+                            <li class="hidden-xs purchasebtnmenu">
+
+
+                                <a href="@Url.Action("premium","User",new { language= ViewBag.language})">
+                                    <i class="fa fa-archive"></i> @setLang.ByPr
+
+                                </a>
+                            
+                            </li>
+
+                        
+
+                            <li class="dropdown profile-dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+
+                                    @if (UserInfo.Image != null)
+                                    {
+                                        <img src="@Url.Content(UserInfo.Image)" alt="" />
+                                    }
+                                    else
+                                    {
+                                        <img src="~/Images/Notimg.png" alt="" />
+                                    }
+
+
+
+
+                                    <span class="hidden-xs">@UserInfo.Name</span> <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+
+                                    <li><a href="@Url.Action("profile","User",new { language= ViewBag.language})"><i class="fa fa-user"></i>@setLang.MyProfile</a></li>
+
+                                    <li><a href="@Url.Action("favorites","User",new { language= ViewBag.language})"><i class="fa fa-star"></i>@setLang.Favorite</a></li>
+
+                                    @if (User.IsInRole("admin"))
+                                    {
+                                        <li><a href="@Url.Action("VideoLessons","portal",new { language= ViewBag.language})"><i class="fa fa-bars"></i>Админ</a></li>
+
+                                    }
+
+
+                                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "visible-xs", language = ViewBag.language }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <a class="btn" href="javascript:document.getElementById('logoutForm').submit()" style="width:100%"><i class="fa fa-power-off"></i> @setLang.Logout</a>
+                                    }
+
+
+                                </ul>
+                            </li>
+                            <li class="hidden-xs">
+
+                                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm",language = ViewBag.language}))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <a class="btn" href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-power-off"></i></a>
+                                }
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div id="page-wrapper" class="container">
+            <div class="row">
+                <div id="nav-col" class="visible-xs">
+                    <section id="col-left" class="col-left-nano">
+                        <div id="col-left-inner" class="col-left-nano-content">
+
+                            <div class="navbar-collapse navbar-ex1-collapse collapse " id="sidebar-nav" style="">
+                                <ul class="nav nav-pills nav-stacked">
+
+
+                                    <li>
+                                        <a href="@Url.Action("profile","User",new { language= ViewBag.language})">
+                                            <i class="fa fa-user"></i>
+                                            <span>@setLang.MyProfile</span>
+
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="@Url.Action("Modules","Learning",new { language= ViewBag.language})">
+                                            <i class="fa fa-list-ul"></i>
+                                            <span>@setLang.Modules</span>
+
+                                        </a>
+                                    </li>
+                                    <li>
+
+                                        <a href="@Url.Action("AllVideos","Learning",new { language= ViewBag.language})">
+
+                                            <i class="fa fa-film"></i>
+                                            <span>@setLang.Lessons</span>
+                                        </a>
+                                    </li>
+
+                                    @*<li>
+
+                                            <a href="@Url.Action("Tasks","Learning")">
+
+                                                <i class="fa fa-tasks"></i>
+                                                <span>@setLang.Tasks</span>
+                                            </a>
+                                        </li>*@
+                                    @*<li>
+                                            <a href="@Url.Action("Studied","Learning")">
+
+                                                <i class="fa fa-bookmark  "></i>
+                                                <span>Изучено </span>
+
+
+                                            </a>
+                                        </li>*@
+                                    <li>
+                                        <a href="@Url.Action("favorites","User",new { language= ViewBag.language})">
+
+                                            <i class="fa fa-star "></i>
+                                            <span>@setLang.Favorite</span>
+
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                            <a href="@Url.Action("Useful_services","Learning",new { language= ViewBag.language})">
+
+                                                <i class="fa fa-info"></i>
+                                                <span>@setLang.UsefulServices</span>
+                                            </a>
+                                        </li>
+
+                                    @*<li>
+                                            <a href="@Url.Action("listnames","Learning")">
+
+                                                <i class="fa fa-book"></i>
+                                                <span>Список имен</span>
+                                            </a>
+                                        </li>*@
+
+
+                                    <li>
+
+                                        <a href="@Url.Action("certificates","User",new { language= ViewBag.language})">
+
+                                            <i class="fa fa-certificate"></i>
+                                            <span>Сертификат</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+
+                                        <a href="@Url.Action("premium","User",new { language= ViewBag.language})">
+
+                                            <i class="fa fa-archive"></i>
+                                            <span>@setLang.ByPr</span>
+                                        </a>
+                                    </li>
+
+
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+                <div class="container">
+
+                 
+
+                        <div class="clearfix visible-xs" style="background-color:white;margin-top:15px">
+
+                            <button class="navbar-toggle" data-target=".navbar-ex2-collapse" data-toggle="collapse" type="button">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="fa fa-bars"></span>
+                            </button>
+                            <div class="nav-no-collapse" id="header-nav">
+                                <ul class="nav navbar-nav pull-left">
+                                    <li class="dropdown ">
+                                        <a style="font-size:14px">
+                                            <span class="fa fa-external-link-square"></span> @setLang.MyProgress
+
+                                        </a>
+
+                                    </li>
+
+                                </ul>
+
+                                <ul class="nav navbar-nav pull-right">
+                                    <li class="purchasebtnmenu">
+
+
+                                        <a href="@Url.Action("premium","User",new { language= ViewBag.language})">
+                                            <i class="fa fa-archive"></i>@setLang.ByPr
+
+                                        </a>
+
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <input type="hidden" value="-1" id="progdb" />
+                        </div>
+
+                    <div class="visible-xs">
+
+                        <div class="navbar-collapse navbar-ex2-collapse collapse" style="height: 1px;">
+
+                            <div class="stat">
+                                <div class="main-box-body clearfix">
+                                    <div class="center-block" style="width: 200px;">
+                                        <input class="knob" data-width="200" data-readOnly=true data-angleOffset="180" data-fgColor="#03a9f4" data-skin="tron" data-thickness=".1" value="@ViewBag.OUK">
+                                    </div>
+                                </div>
+
+                                <span>  @setLang.Passed : @ViewBag.OUK % </span>
+
+
+                            </div>
+                            <div class="stat">
+                                <div class="main-box-body clearfix">
+                                    <div class="center-block" style="width: 200px;">
+                                        <input class="knob" data-width="200" data-angleOffset="180" data-readOnly=true data-fgColor="#8bc34a" data-skin="tron" data-thickness=".1" value="@ViewBag.TBB">
+                                    </div>
+                                </div>
+
+                                <span> @setLang.Performance : @ViewBag.TBB % </span>
+
+
+                            </div>
+
+                        </div>
+                        </div>
+                    </div>
+                <div id="content-wrapper" style="margin-left:0px !important">
+                    <div class="row" style="margin-bottom: 20px">
+                        <div class="col-lg-12">
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                </div>
+                            </div>
+
+                            <div class="row" id="user-profile">
+
+                                <div class="main-box" style="max-width:980px;margin:0px auto 15px auto" id="main-cont">
+                                    <div class="main-box clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-2 bb hidden-xs">
+
+                                            <a href="@Url.Action("profile","User",new { language= ViewBag.language})">
+
+                                                <div class="lbp">
+                                                    <i class="fa fa-user fa-2x"></i>
+                                                    <br />
+                                                    <span>@setLang.MyProfile</span>
+                                                </div>
+
+
+                                            </a>
+                                            <a href="@Url.Action("Modules","Learning",new { language= ViewBag.language})">
+
+                                                <div class="lbp">
+                                                    <i class="fa fa-list-ul fa-2x"></i>
+                                                    <br />
+                                                    <span>@setLang.Modules</span>
+                                                </div>
+
+
+                                            </a>
+                                            <a href="@Url.Action("AllVideos","Learning",new { language= ViewBag.language})">
+                                                <div class="lbp">
+                                                    <i class="fa fa-film fa-2x"></i>
+                                                    <br />
+                                                    <span>@setLang.Lessons</span>
+                                                </div>
+                                            </a>
+                                            @*<a href="@Url.Action("Tasks","Learning")">
+                                                    <div class="lbp">
+                                                        <i class="fa fa-tasks fa-2x"></i>
+                                                        <br />
+                                                        <span>@setLang.Tasks</span>
+                                                    </div>
+                                                </a>*@
+                                            @*<a href="@Url.Action("Studied","Learning")">
+                                                    <div class="lbp">
+                                                        <i class="fa fa-bookmark fa-2x "></i>
+                                                        <br />
+                                                        <span>Изучено </span>
+
+                                                    </div>
+                                                </a>*@
+                                            <a href="@Url.Action("favorites","User",new { language= ViewBag.language})">
+                                                <div class="lbp">
+                                                    <i class="fa fa-star fa-2x "></i>
+                                                    <br />
+                                                    <span>@setLang.Favorite</span>
+
+                                                </div>
+                                            </a>
+
+                                            <a href="@Url.Action("Useful_services","Learning",new { language= ViewBag.language})">
+                                                    <div class="lbp">
+                                                        <i class="fa fa-info fa-2x "></i>
+                                                        <br />
+                                                        <span>@setLang.UsefulServices</span>
+
+                                                    </div>
+                                                </a>
+
+
+                                            @*<a href="@Url.Action("listnames","Learning")">
+                                                    <div class="lbp">
+                                                        <i class="fa fa-book fa-2x" ></i>
+                                                        <br />
+                                                        <span>Список имен</span>
+
+                                                    </div>
+                                                </a>*@
+
+
+                                            <a href="@Url.Action("certificates","User",new { language= ViewBag.language})">
+
+                                                <div class="lbp">
+                                                    <i class="fa fa-certificate fa-2x" style="color:#ffc107"></i>
+                                                    <br />
+                                                    <span>Сертификат</span>
+                                                </div>
+
+
+                                            </a>
+                                            <a href="@Url.Action("premium","User",new { language= ViewBag.language})">
+
+                                                <div class="lbp">
+                                                    <i class="fa fa-archive fa-2x" style="color:#ffc107"></i>
+                                                    <br />
+                                                    <span>@setLang.ByPr</span>
+                                                </div>
+
+
+                                            </a>
+
+                                        </div>
+
+                                        <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12 main-box-l">
+
+
+                                       
+
+                                            @RenderSection("featured", required: false)
+                                            @RenderBody()
+
+                                        </div>
+
+
+                                        <div class="col-lg-3 col-md-3 col-sm-4 bbr hidden-xs" id="bbr">
+
+                                            <div class="UserProfile">
+                                                <div class="UserImageBox">
+
+                                              
+
+
+                                                    @if (UserInfo.Image != null)
+                                                    {
+                                                        <img id="uploadPreview1" class="UserImage" src="@Url.Content(UserInfo.Image)" alt="">
+
+                                                    }
+                                                    else
+                                                    {
+                                                        <img id="uploadPreview1" class="UserImage" src="/Images/Notimg.png" alt="">
+
+                                                    }
+                                                </div>
+
+                                                @if(ViewBag.UpdatePhoto==true){
+                                                
+                                                <label for="img1"> 
+                                                    <a class="btn-default btn-block updateubtn">Обновить фотографию <i class="fa fa-arrow-up"></i></a>
+                                                </label>
+
+                                             
+
+                                                }
+
+                                                <div class="UserName">@UserInfo.Name</div>
+                                            </div>
+
+                                            <div class="titleprog">
+
+                                                <i class="fa fa-external-link-square "></i><span> @setLang.MyProgress </span>
+                                            </div>
+
+                                            <div class="stat">
+                                                <div class="main-box-body clearfix">
+                                                    <div class="center-block" style="width: 200px;">
+                                                        <input class="knob" data-width="200" data-readOnly=true data-angleOffset="180" data-fgColor="#03a9f4" data-skin="tron" data-thickness=".1" value="@ViewBag.OUK">
+                                                    </div>
+                                                </div>
+
+                                                <span> @setLang.Passed : @ViewBag.OUK %  </span>
+
+
+                                            </div>
+
+                                            <div class="stat">
+                                                <div class="main-box-body clearfix">
+                                                    <div class="center-block" style="width: 200px;">
+                                                        <input class="knob" data-width="200" data-angleOffset="180" data-readOnly=true data-fgColor="#8bc34a" data-skin="tron" data-thickness=".1" value="@ViewBag.TBB">
+                                                    </div>
+                                                </div>
+
+                                                <span>
+                                                    @setLang.Performance : @ViewBag.TBB %
+                                                </span>
+
+
+                                            </div>
+
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <footer id="footer-bar" class="row">
+                        <p id="footer-copyright" class="col-xs-12">
+                            © @DateTime.Now.Year Онлайн курс | ZERTIS  @setLang.Reserved .
+                        </p>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- global scripts -->
+
+    <script src="~/Content/js/jquery.js"></script>
+    <script src="~/Content/js/bootstrap.js"></script>
+    <script src="~/Content/js/jquery.nanoscroller.min.js"></script>
+
+
+
+
+    <script src="~/Content/js/demo.js"></script> <!-- only for demo -->
+    <script src="~/Content/js/jquery.knob.js"></script>
+
+    <script src="~/Content/js/modernizr.custom.js"></script>
+    <script src="~/Content/js/notificationFx.js"></script>
+
+
+
+
+    <!-- theme scripts -->
+    <script src="~/Content/js/scripts.js"></script>
+    <script src="~/Content/js/pace.min.js"></script>
+
+    <script>
+        $(function ($) {
+            $(".knob").knob({
+                change: function (value) {
+                    //console.log("change : " + value);
+                },
+                release: function (value) {
+                    //console.log(this.$.attr('value'));
+                    console.log("release : " + value);
+                },
+                cancel: function () {
+                    console.log("cancel : ", this);
+                },
+                draw: function () {
+
+                    // "tron" case
+                    if (this.$.data('skin') == 'tron') {
+
+                        var a = this.angle(this.cv)  // Angle
+                        , sa = this.startAngle		  // Previous start angle
+                        , sat = this.startAngle		 // Start angle
+                        , ea							// Previous end angle
+                        , eat = sat + a				 // End angle
+                        , r = 1;
+
+                        this.g.lineWidth = this.lineWidth;
+
+                        this.o.cursor
+                        && (sat = eat - 0.3)
+                        && (eat = eat + 0.3);
+
+                        if (this.o.displayPrevious) {
+                            ea = this.startAngle + this.angle(this.v);
+                            this.o.cursor
+                            && (sa = ea - 0.3)
+                            && (ea = ea + 0.3);
+                            this.g.beginPath();
+                            this.g.strokeStyle = this.pColor;
+                            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false);
+                            this.g.stroke();
+                        }
+
+                        this.g.beginPath();
+                        this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sat, eat, false);
+                        this.g.stroke();
+
+                        this.g.lineWidth = 2;
+                        this.g.beginPath();
+                        this.g.strokeStyle = this.o.fgColor;
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+                        this.g.stroke();
+
+                        return false;
+                    }
+                }
+            });
+
+            // Example of infinite knob, iPod click wheel
+            var v, up = 0, down = 0, i = 0
+            , $idir = $("div.idir")
+            , $ival = $("div.ival")
+            , incr = function () { i++; $idir.show().html("+").fadeOut(); $ival.html(i); }
+            , decr = function () { i--; $idir.show().html("-").fadeOut(); $ival.html(i); };
+
+            $("input.infinite").knob({
+                min: 0
+            , max: 20
+            , stopper: false
+            , change: function () {
+                if (v > this.cv) {
+                    if (up) {
+                        decr();
+                        up = 0;
+                    } else { up = 1; down = 0; }
+                } else {
+                    if (v < this.cv) {
+                        if (down) {
+                            incr();
+                            down = 0;
+                        } else { down = 1; up = 0; }
+                    }
+                }
+                v = this.cv;
+            }
+            });
+        });
+    </script>
+    <!-- this page specific inline scripts -->
+    <script>
+        function progress() {
+
+            var pdb = $("#progdb").val();
+            if (pdb == -1) {
+                $("#prog").removeClass("hidden");
+
+            }
+            else {
+                $("#prog").addClass("hidden")
+
+            }
+            $("#progdb").val(pdb * (-1));
+        }
+    </script>
+    <script src="~/Content/js/classie.js"></script>
+    <script src="~/Content/js/modalEffects.js"></script>
+
+
+
+
+
+    @if (IsSectionDefined("PlyrJs"))
+            {
+        @RenderSection("PlyrJs")
+    }
+
+    <!-- Document Ready Scripts-->
+    <script>
+        $(document).keydown(function (event) {
+            if (event.keyCode == 123) {
+                return false;
+            }
+            else if ((event.ctrlKey && event.shiftKey && event.keyCode == 73) || (event.ctrlKey && event.shiftKey && event.keyCode == 74)) {
+                return false;
+            }
+        });
+        $(document).ready(function () {
+        });
+
+        document.onkeydown = function (e) {
+            if (e.ctrlKey &&
+                (e.keyCode === 67 ||
+                    e.keyCode === 86 ||
+                    e.keyCode === 85 ||
+                    e.keyCode === 117)) {
+                return false;
+            } else {
+                return true;
+            }
+        };
+    </script>
+
+
+    <!-- Facebook Pixel Code -->
+    <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2562025064084037');
+  fbq('track', 'PageView');
+  fbq('track', 'Lead');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+             src="https://www.facebook.com/tr?id=2562025064084037&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(66254413, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/66254413" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

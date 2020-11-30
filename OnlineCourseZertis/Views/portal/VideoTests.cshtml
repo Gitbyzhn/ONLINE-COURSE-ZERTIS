@@ -1,0 +1,244 @@
+﻿
+@{
+
+    ViewBag.VideoTests = "active";
+    Layout = "~/Views/Shared/_Layout_portal.cshtml";
+}
+
+
+
+@section data_table_css{
+    <link rel="stylesheet" href="~/Content/portal/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+
+}
+
+
+
+@model  IEnumerable<OnlineCourseZertis.Models.VideoL>
+
+
+
+
+<section class="content-header">
+    <h1>
+        Таблица ВИДЕО ТЕСТЫ
+    </h1>
+ 
+   
+
+
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("VideoTests","portal")"><i class="fa fa-dashboard"></i> Главная</a></li>
+
+        <li class="active">                      ВИДЕО ТЕСТЫ</li>
+    </ol>
+
+
+
+    <div class="control_data_table">
+        <a href="@Url.Action("createvtests","portal")" class="btn btn-success"> + <span class="fa fa-file-movie-o" style="font-size: 16px;"> Создать видеотест</span> </a>
+
+        @*<a href="" class="btn btn-info right" margin-right:20px" id="OpenNews"> <span class="fa fa-sign-in" style="font-size: 16px;"> Открыть</span> </a>*@
+
+
+      <div class="dropdown" style="float:right">
+
+        <a class="dropdown-toggle btn btn-success" data-toggle="dropdown" href="#" aria-expanded="false">
+            @ViewBag.language <span class="caret"></span>
+        </a>
+
+
+
+        <ul class="dropdown-menu" style="left: -111px;">
+            <li><a href="@Url.Action("VideoTests","portal",new { language="kz"})">Қазақ</a> </li>
+            <li><a href="@Url.Action("VideoTests","portal",new { language="ru"})">Руский</a></li>
+            <li><a href="@Url.Action("VideoTests","portal",new { language="uz"})">O'zbek</a></li>
+            <li><a href="@Url.Action("VideoTests","portal",new { language="kr"})">Кыргыз</a></li>
+            <li><a href="@Url.Action("VideoTests","portal",new { language="en"})">English</a></li>
+            <li><a href="@Url.Action("VideoTests","portal",new { language="tr"})">Türk</a></li>
+        </ul>
+
+    </div>
+
+        @*<li >
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="true">
+                Dropdown <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+            </ul>
+        </li>*@
+    </div>
+
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+
+        <div class="col-xs-12">
+
+            <div class="box" style="margin-top:20px">
+
+                <!-- /.box-header -->
+                <div class="box-body">
+
+
+
+
+
+                    <table id="data_table" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+
+                                <th>XId</th>
+                                <th>Вопрос</th>
+                                <th>Ответ</th>
+                                <th>Изменить</th>
+                                <th>Удалить</th>
+
+                               
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                            @if (Model.Count() > 0)
+                            {
+
+
+                                foreach (var video in Model)
+                                {
+
+                                    foreach (var item in video.Tests)
+                                    {
+                                        <tr>
+
+
+                                            <td>@item.VideoL.XId</td>
+                                            <td>@item.Question</td>
+
+                                            @if (item.Answer == 1)
+                                            {
+                                                <td>@item.A</td>
+                                            }
+                                            else if (item.Answer == 2)
+                                            {
+                                                <td>@item.B</td>
+                                            }
+                                            else if (item.Answer == 3)
+                                            {
+                                                <td>@item.C</td>
+                                            }
+                                            else if (item.Answer == 4)
+                                            {
+                                                <td>@item.D</td>
+                                            }
+                                            else if (item.Answer == 5)
+                                            {
+                                                <td>@item.E</td>
+                                            }
+
+
+
+
+                                            <td>
+
+
+
+                                                <a class="btn btn-social-icon btn-facebook" href="@Url.Action("editvtests","portal",new { Id=item.Id,language= ViewBag.language })"><i class="fa fa-edit"></i></a>
+
+                                            </td>
+
+                                            <td>
+
+                                                <a class="btn btn-social-icon btn-google" href="@Url.Action("removevtests","portal",new { Id=item.Id,language= ViewBag.language })"><i class="fa fa-trash-o"></i></a>
+
+                                            </td>
+
+
+                                        </tr>
+
+                                    }
+
+                                }
+
+
+
+                            }
+
+
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+
+                                <th>XId</th>
+                                <th>Вопрос</th>
+                                <th>Ответ</th>
+                                <th>Изменить</th>
+                                <th>Удалить</th>
+
+
+
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+ <input type="hidden" id="RemoveTestMsg" value="@ViewBag.Message" />
+<script>
+
+    function Message() {
+    var RemoveTestMsg = $("#RemoveTestMsg").val();
+    if (RemoveTestMsg == "success") {
+        toastr["success"]("Тест удален !!!")
+    }
+    else if (RemoveTestMsg == "error") {
+        toastr["warning"]("При обработка видео произошла ошибка")
+    }
+    }
+    setTimeout(Message, 1000);
+
+   
+
+
+
+
+</script>
+
+
+
+@section data_table_js{
+    <!-- DataTables -->
+    <script src="~/Content/portal/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/portal/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+}
+
+@section data_table{
+
+    $('#data_table')
+    .addClass('nowrap')
+    .dataTable({
+
+    "language": {
+    "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Russian.json"
+    },
+
+
+    });
+}
+
+
+
+

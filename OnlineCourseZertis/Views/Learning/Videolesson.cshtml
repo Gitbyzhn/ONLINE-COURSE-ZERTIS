@@ -1,0 +1,343 @@
+﻿@model OnlineCourseZertis.Models.VideoL
+@using OnlineCourseZertis.Models
+
+@{
+    Layout = "~/Views/Shared/_LayoutLearn.cshtml";
+
+    if (ViewBag.FullookL==false)
+    {
+        ViewBag.hidden = "hidden";
+    }
+
+
+    var setLang = GetUser.VideoLesson(ViewBag.language);
+
+}
+
+<style>
+
+    #player {
+  --plyr-color-main: #1ac266;
+}
+</style>
+
+
+<link href="~/Content/js/plyr/plyr.css" rel="stylesheet" />
+
+
+
+<link href="~/Content/css/private/firework.css" rel="stylesheet" />
+
+
+<header class="main-box-header clearfix header-title-l">
+    <h2 style="font-weight:900 !important">@Model.Name</h2>
+</header>
+
+
+
+
+
+
+<div class="main-box-body clearfix">
+    <!-- 4:3 aspect ratio --  videoh-->
+
+
+ 
+
+    <div class="container">
+        <div id="player" data-plyr-provider="youtube" style="width:100%" data-plyr-embed-id="@Model.Link"></div>
+    </div>
+    
+   
+
+    <br /><br />
+
+    <div class="col-xs-12" style="color:#808080; border-bottom:2px solid grey">
+
+        
+        <div style="float:right;padding:6px">
+
+
+
+            @if (ViewBag.izb == 1)
+            {
+                <i class="fa fa-star-o  hidden" id="izb1" style="cursor:pointer" onclick="izb(@Model.Id)">
+                </i>
+                                                        <i class="fa fa-star " id="izb0" style="cursor:pointer" onclick="izb(@Model.Id)">
+                                                        </i>
+            }
+            else
+            {
+                <i class="fa fa-star-o " id="izb1" style="cursor:pointer" onclick="izb(@Model.Id)">
+                </i>
+                                                        <i class="fa fa-star  hidden" id="izb0" style="cursor:pointer" onclick="izb(@Model.Id)">
+                                                        </i>
+            }
+
+            <input type="hidden" class="izb01" value="@ViewBag.izb" id="izbd" />
+
+        </div>
+        <div style="float:right;padding:6px">
+            <i class="fa  fa-eye "> @Model.VideoXL.VideoLEMs.FirstOrDefault().Eye</i>
+        </div>
+ 
+
+        <div style="float:right;padding:6px">
+
+            <i class="fa  fa-thumbs-up " style="cursor:pointer" onclick="like(@Model.Id)">
+
+                @{ int? lk = 0;}
+                @if (ViewBag.lkv == 1)
+                {
+                    lk = Model.VideoXL.VideoLEMs.FirstOrDefault().Likes - 1;
+                    <span id="like0" style="color:#03a9f4;font-weight:bold">@Model.VideoXL.VideoLEMs.FirstOrDefault().Likes</span>
+                                                            <span id="like1" class="hidden">@lk</span>
+                }
+                else
+                {
+                    lk = Model.VideoXL.VideoLEMs.FirstOrDefault().Likes + 1;
+                    <span id="like1">@Model.VideoXL.VideoLEMs.FirstOrDefault().Likes</span>
+                                                            <span id="like0" class="hidden" style="color:#03a9f4;font-weight:bold">@lk</span>
+                }
+
+                <input type="hidden" class="like01" value="@ViewBag.lkv" id="lkbd" />
+
+            </i>
+
+        </div>
+
+
+
+
+    </div>
+
+
+
+</div>
+
+
+<div class="col-xs-12" style="margin-bottom:20px">
+
+    <div id="buttonpoz">
+
+        
+
+        <div class="col-xs-12"> 
+
+
+            @if (ViewBag.LastVId != null)
+            {
+                <div class="previous" style="float:left"><a href="@Url.Action("Videolesson", "Learning", new { Id = ViewBag.LastVId, language = ViewBag.language})">← @setLang.Previous</a></div>
+            }
+
+
+            @if (ViewBag.NextV != 0)
+            {
+
+                if (ViewBag.NextV == 1)
+                {
+                    <div class="next @ViewBag.hidden" id="nextpl" style="float:right"><a href="@Url.Action("Test", "Learning", new { id = Model.Id, language = ViewBag.language })">@setLang.Next  →</a></div>
+                }
+
+                else if (ViewBag.NextV == 3)
+                {
+                    <div class="next @ViewBag.hidden" id="nextpl" style="float:right"><a href="@Url.Action("Videolesson", "Learning", new { Id = ViewBag.NextVId, language = ViewBag.language })">@setLang.Next  →</a></div>
+                }
+                else if (ViewBag.NextV == 4)
+                {
+                    <div class="next @ViewBag.hidden" id="nextpl" style="float:right"><a href="@Url.Action("premium", "User",new { language = ViewBag.language})">@setLang.Next  →</a></div>
+
+                }
+                else if (ViewBag.NextV == 5)
+                {
+                    <div class="next @ViewBag.hidden" id="nextpl" style="float:right"><a href="@Url.Action("Quiz", "Learning",new{language = ViewBag.language })">Пройти опрос  →</a></div>
+
+                }
+
+            }
+          
+
+        </div>
+
+   
+
+        
+
+        </div>
+</div>
+
+
+
+<script>
+
+        function progress() {
+
+            var pdb = $("#progdb").val();
+            if (pdb == -1) {
+                $("#prog").removeClass("hidden");
+
+            }
+            else {
+                $("#prog").addClass("hidden")
+
+            }
+            $("#progdb").val(pdb * (-1));
+        }
+
+
+        function like(id) {
+            
+                var ltf = $(".like01").val();
+                var tf = 0;
+
+                if (ltf == 1) {
+                    $("#like1").removeClass("hidden");
+                    $("#like0").addClass("hidden");
+                    $("#lkbd").val(0);
+                }
+                else {
+                    $("#like0").removeClass("hidden");
+                    $("#like1").addClass("hidden");
+                    $("#lkbd").val(1);
+                    tf = 1;
+                }
+                var url = '@Url.Action("like", "Learning")';
+                $.getJSON(url, { id: id, tf: tf }, function () {
+                });
+            
+
+
+        }
+
+
+
+        function izb(id) {
+            var ltf = $("#izbd").val();
+            var tf = 0;
+            if (ltf == 1) {
+                $("#izb1").removeClass("hidden");
+                $("#izb0").addClass("hidden");
+                $("#izbd").val(0);
+          
+            }
+            else {
+                $("#izb0").removeClass("hidden");
+                $("#izb1").addClass("hidden");
+                $("#izbd").val(1);
+                tf = 1;
+            }
+            var url = '@Url.Action("izb", "Learning")';
+            $.getJSON(url, { id: id, tf: tf }, function () {
+            });
+
+
+        }
+</script>
+
+
+
+
+
+
+
+
+
+@section PlyrJs{
+    
+       
+<script src="~/Content/js/plyr/plyr.min.js"></script>
+
+
+    <script>
+
+        const player = new Plyr('#player', {
+            controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen','captions'],
+            youtube: { noCookie: false, rel: 0, showinfo: 0, iv_load_policy: 0, modestbranding: 1, сс_load_policy: 1},
+            keyboard:{ focused: false, global: false },
+
+           @if (ViewBag.FullookL==false && User.Identity.Name!= "+7-702-851-5565")
+           {
+                <text>
+            listeners:
+                {
+                seek: function(e) {
+                        e.preventDefault() // required on v2
+
+
+                    return false    // required on v3
+                }
+                }
+            </text>
+            }
+
+
+        });
+
+
+        var Fenable = true;
+
+
+        player.on('timeupdate', event => {
+
+            if(player.currentTime > player.duration-10 && Fenable){
+                Fenable = false;
+                fulllook();
+            }
+
+        });
+
+
+        function fulllook(){
+
+
+            $("#nextpl").removeClass("hidden");
+
+
+
+
+
+
+
+            var a = @Model.Id;
+            var nextv = @ViewBag.NextV;
+
+            if(nextv!=1&&nextv!=2)
+            {
+                nextv = 0;
+            }
+
+
+
+            $.ajax({
+                url: "@Url.Action("lookVideoL", "Learning",new { language = ViewBag.language})",
+                type: "POST",
+                data:{id: a,ts:nextv},
+                success: function (response) {
+
+
+                },
+             error: function () { }
+
+            });
+
+
+
+        }
+
+
+        player.on('ready', event => {
+
+            var url = '@Url.Action("Addeye", "Learning")';
+             var a = @Model.Id;
+            $.getJSON(url, { id: a }, function () {
+            });
+        });
+
+
+
+
+
+    </script>
+
+
+    } 

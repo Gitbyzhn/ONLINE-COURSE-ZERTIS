@@ -1,0 +1,579 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5D64B09C-F359-4AF0-9206-F2B5E420FB4E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OnlineCourseZertis</RootNamespace>
+    <AssemblyName>OnlineCourseZertis</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Cors, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Cors.4.1.0\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NReco.ImageGenerator, Version=1.1.3.0, Culture=neutral, PublicKeyToken=0ef6c878974c90ac, processorArchitecture=MSIL">
+      <HintPath>..\packages\NReco.ImageGenerator.1.1.3\lib\net45\NReco.ImageGenerator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NuGet.Frameworks, Version=4.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Frameworks.4.6.1\lib\net40\NuGet.Frameworks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Cors, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.0.0\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="API\ZertisOCsController.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\SMSPhone.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\LearningController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PortalController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\userpaymentController.cs" />
+    <Compile Include="Events\VerifyAvailability.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C__MigrationHistory.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB_Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB_Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB_Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ExpiredTimeVL.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EyeV.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetUser.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Isbranni.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JVLO.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LessonVideoTime.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LikeV.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Modul.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Modules_Property.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Modul_userLevel.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OUTClass.cs" />
+    <Compile Include="Models\Premium.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Premium_OrderId.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Quiz.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Quiz_A_User_Answer.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Quiz_B_User_Answer.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Quiz_Content.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Quiz_C_User_Answer.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Quiz_Option.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Test.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserInfo.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Users_Certificates.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User_Premium.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User_Premium_Status.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ValitO.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VideoL.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VideoLEM.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VideoXL.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyAuthorizationServerProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\private\Admin.css" />
+    <Content Include="Content\css\private\Learning.css" />
+    <Content Include="Content\css\private\Test.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\8f052742e2ebac31ce5c69dd70c8ef75.png" />
+    <Content Include="Images\accent.png" />
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\business-doodle.jpg" />
+    <Content Include="Images\certificate.jpg" />
+    <Content Include="Images\default-avatar.png" />
+    <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\iconimg-n.png" />
+    <Content Include="Images\iconimg.png" />
+    <Content Include="Images\Limage\kz\m0l1.jpeg" />
+    <Content Include="Images\Limage\kz\m0l1_n.jpg" />
+    <Content Include="Images\Limage\kz\m0l2.jpeg" />
+    <Content Include="Images\Limage\kz\m0l2_n.jpg" />
+    <Content Include="Images\Limage\kz\m1l1.jpeg" />
+    <Content Include="Images\Limage\kz\m1l1_n.jpg" />
+    <Content Include="Images\Limage\kz\m3L1.png" />
+    <Content Include="Images\Limage\kz\m3l1_n.png" />
+    <Content Include="Images\Limage\ru\222.jpg" />
+    <Content Include="Images\Limage\ru\KazNPU_imeni_Abaya.jpg" />
+    <Content Include="Images\Limage\ru\m0l2.jpeg" />
+    <Content Include="Images\Limage\ru\m0l2_n.jpg" />
+    <Content Include="Images\Limage\ru\m1l1.jpeg" />
+    <Content Include="Images\Limage\ru\m1l1_n.jpg" />
+    <Content Include="Images\Limage\ru\m1l2.jpeg" />
+    <Content Include="Images\Limage\ru\m1l2_n.jpg" />
+    <Content Include="Images\Limage\ru\m1l3.jpeg" />
+    <Content Include="Images\Limage\ru\m1l3_n.jpg" />
+    <Content Include="Images\Limage\ru\m1l4.jpeg" />
+    <Content Include="Images\Limage\ru\m1l4_n.jpg" />
+    <Content Include="Images\Limage\ru\m1l5.jpeg" />
+    <Content Include="Images\Limage\ru\m1l5_n.jpg" />
+    <Content Include="Images\Limage\ru\m1l6.jpeg" />
+    <Content Include="Images\Limage\ru\m1l6_n.jpg" />
+    <Content Include="Images\Limage\ru\m1l7.jpeg" />
+    <Content Include="Images\Limage\ru\m1l7_n.jpg" />
+    <Content Include="Images\Limage\ru\m1l8.jpeg" />
+    <Content Include="Images\Limage\ru\m1l8_n.jpg" />
+    <Content Include="Images\Limage\ru\m1l9.jpeg" />
+    <Content Include="Images\Limage\ru\m1l9_n.jpg" />
+    <Content Include="Images\Limage\ru\m3L1.png" />
+    <Content Include="Images\Limage\ru\m3l1_n.png" />
+    <Content Include="Images\Limage\ru\m3l2.PNG" />
+    <Content Include="Images\Limage\ru\m3l2_n.png" />
+    <Content Include="Images\Limage\ru\m3l3.PNG" />
+    <Content Include="Images\Limage\ru\m3l3_n.png" />
+    <Content Include="Images\Limage\ru\m3l4.PNG" />
+    <Content Include="Images\Limage\ru\m3l4_n.png" />
+    <Content Include="Images\Limage\ru\m3l5.png" />
+    <Content Include="Images\Limage\ru\m3l5_n.png" />
+    <Content Include="Images\Limage\ru\m3l6.PNG" />
+    <Content Include="Images\Limage\ru\m3l6_n.png" />
+    <Content Include="Images\Limage\ru\m4l1.jpg" />
+    <Content Include="Images\Limage\ru\m4l1_n.jpg" />
+    <Content Include="Images\Limage\ru\m4l2.PNG" />
+    <Content Include="Images\Limage\ru\m4l2_n.png" />
+    <Content Include="Images\Limage\ru\m4l3.png" />
+    <Content Include="Images\Limage\ru\m4l3_n.png" />
+    <Content Include="Images\Limage\ru\m4l4.PNG" />
+    <Content Include="Images\Limage\ru\m4l4_n.png" />
+    <Content Include="Images\Limage\ru\m4l5.PNG" />
+    <Content Include="Images\Limage\ru\m4l5_n.png" />
+    <Content Include="Images\Limage\ru\m4l6.PNG" />
+    <Content Include="Images\Limage\ru\m4l6_n.png" />
+    <Content Include="Images\Limage\ru\Modul1.jpg" />
+    <Content Include="Images\Limage\ru\Modul1.PNG" />
+    <Content Include="Images\Limage\ru\Modul2.jpg" />
+    <Content Include="Images\Limage\ru\PerviBU.PNG" />
+    <Content Include="Images\Limage\ru\Untitled-2.jpg" />
+    <Content Include="Images\Limage\ru\VU0.PNG" />
+    <Content Include="Images\Limage\ru\VU1.PNG" />
+    <Content Include="Images\Limage\ru\WhatsApp_Image_2020-06-22_at_13.17.55.jpeg" />
+    <Content Include="Images\Limage\ru\WhatsApp_Image_2020-06-22_at_13.17.55_%281%29.jpeg" />
+    <Content Include="Images\ModulImage\222.jpg" />
+    <Content Include="Images\ModulImage\Modul1.jpg" />
+    <Content Include="Images\ModulImage\Modul1.PNG" />
+    <Content Include="Images\ModulImage\Modul2.jpg" />
+    <Content Include="Images\ModulImage\Modul3.jpg" />
+    <Content Include="Images\ModulImage\Modul4.jpg" />
+    <Content Include="Images\ModulImage\PerviBU.PNG" />
+    <Content Include="Images\ModulImage\VMi1tYkfYQA.jpg" />
+    <Content Include="Images\ModulImage\VU1.PNG" />
+    <Content Include="Images\Notimg.png" />
+    <Content Include="Images\telegram.png" />
+    <Content Include="Models\DB_Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB_Model.edmx</DependentUpon>
+      <LastGenOutput>DB_Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DB_Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB_Model.edmx</DependentUpon>
+      <LastGenOutput>DB_Model.cs</LastGenOutput>
+    </Content>
+    <Content Include="ServerFile\Scripts\bootstrap.js" />
+    <Content Include="ServerFile\Scripts\bootstrap.min.js" />
+    <Content Include="Images\manifest.json" />
+    <EntityDeploy Include="Models\DB_Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DB_Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DB_Model.edmx.diagram">
+      <DependentUpon>DB_Model.edmx</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\OnlineCourseZertis.pubxml" />
+    <None Include="ServerFile\Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="ServerFile\Scripts\jquery-1.10.2.js" />
+    <Content Include="ServerFile\Scripts\jquery-1.10.2.min.js" />
+    <None Include="ServerFile\Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="ServerFile\Scripts\jquery.validate.js" />
+    <Content Include="ServerFile\Scripts\jquery.validate.min.js" />
+    <Content Include="ServerFile\Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="ServerFile\Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="ServerFile\Scripts\modernizr-2.6.2.js" />
+    <Content Include="ServerFile\Scripts\respond.js" />
+    <Content Include="ServerFile\Scripts\respond.min.js" />
+    <Content Include="ServerFile\Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout_Account.cshtml" />
+    <Content Include="Views\Account\sadmin.cshtml" />
+    <Content Include="Views\Account\ConfirmPassword.cshtml" />
+    <Content Include="Views\Shared\_LayoutLearn.cshtml" />
+    <Content Include="Views\Learning\AllVideos.cshtml" />
+    <Content Include="Views\Learning\Modules.cshtml" />
+    <Content Include="Views\Learning\Test.cshtml" />
+    <Content Include="Views\Learning\TestGet.cshtml" />
+    <Content Include="Views\Learning\Videolesson.cshtml" />
+    <Content Include="Views\Learning\Videos.cshtml" />
+    <Content Include="Views\Error\Noaccess.cshtml" />
+    <Content Include="Views\portal\createModule.cshtml" />
+    <Content Include="Views\portal\createvlessons.cshtml" />
+    <Content Include="Views\portal\createvtests.cshtml" />
+    <Content Include="Views\portal\editModule.cshtml" />
+    <Content Include="Views\portal\editvlessons.cshtml" />
+    <Content Include="Views\portal\editvtests.cshtml" />
+    <Content Include="Views\portal\Modules.cshtml" />
+    <Content Include="Views\portal\VideoLessons.cshtml" />
+    <Content Include="Views\portal\VideoTests.cshtml" />
+    <Content Include="Views\User\certificates.cshtml" />
+    <Content Include="Views\User\favorites.cshtml" />
+    <Content Include="Views\User\premium.cshtml" />
+    <Content Include="Views\User\profile.cshtml" />
+    <Content Include="Views\Shared\_LayoutTestandTask.cshtml" />
+    <Content Include="Views\Shared\_Layout_portal.cshtml" />
+    <Content Include="Views\portal\buyers.cshtml" />
+    <Content Include="Views\Learning\Useful_services.cshtml" />
+    <Content Include="Views\portal\Users.cshtml" />
+    <Content Include="Views\Learning\Quiz.cshtml" />
+    <Content Include="Views\Learning\QuizAGet.cshtml" />
+    <Content Include="Views\Learning\QuizBGet.cshtml" />
+    <Content Include="Views\User\premiumTest.cshtml" />
+    <Content Include="Views\portal\Quiz.cshtml" />
+    <Content Include="Views\portal\TakeEnableVL.cshtml" />
+    <Content Include="Views\Learning\QuizCGet.cshtml" />
+    <Content Include="Views\portal\SetExpiredTimeVL.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\contacts\" />
+    <Folder Include="Doc\" />
+    <Folder Include="Images\Certificate\" />
+    <Folder Include="Images\cert\" />
+    <Folder Include="Images\Limage\en\" />
+    <Folder Include="Images\Limage\kr\" />
+    <Folder Include="Images\Limage\tr\" />
+    <Folder Include="Images\Limage\uz\" />
+    <Folder Include="Images\UserCertificate\" />
+    <Folder Include="Images\UserImage\" />
+    <Folder Include="ServerFile\tenbooks\" />
+    <Folder Include="Views\userpayment\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Project_Readme.html" />
+    <Content Include="ServerFile\Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>6957</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:6957/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

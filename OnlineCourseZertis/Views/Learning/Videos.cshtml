@@ -1,0 +1,125 @@
+﻿@model  IEnumerable<OnlineCourseZertis.Models.VideoL>
+@using OnlineCourseZertis.Models
+@{
+    Layout = "~/Views/Shared/_LayoutLearn.cshtml";
+    var setLang = GetUser.TextVideos(ViewBag.language);
+}
+
+
+
+<header class="main-box-header clearfix header-title-l">
+    <h2 style="font-weight:900 !important"> @ViewBag.ModulName </h2>
+</header>
+
+
+<div class="md-modal md-effect-1" id="modal-1">
+    <div class="md-content">
+        <div class="modal-header">
+            <button class="md-close close">&times;</button>
+
+        </div>
+        <div class="modal-body">
+            <form role="form">
+                <div class="alert alert-info">
+                    @if (ViewBag.NextV == 1)
+                    {
+                        <strong>@setLang.Test</strong>
+                    }
+
+                    else
+                    {
+
+                        <strong>@setLang.Lesson</strong>
+                    }
+                </div>
+
+                <div class="form-inline form-inline-box">
+
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            @if (ViewBag.NextV == 1)
+            {
+
+                <a href="@Url.Action("Test", "Learning", new { Id = ViewBag.DisVID, language = ViewBag.language})" class="btn btn-success col-xs-12" style="margin-top:10px">@setLang.PassedTest</a>
+
+            }
+
+            else if (ViewBag.NextV == 3)
+            {
+
+                <a href="@Url.Action("VideoLesson", "Learning", new { id = ViewBag.DisVID, language = ViewBag.language})" class="btn btn-success col-xs-12" style="margin-top:10px">@setLang.PassedLesson </a>
+            }
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="container modul" id="Videos">
+
+
+    @foreach (var item in Model)
+    {
+        if (item.XId <= ViewBag.JVX)
+        {
+            <a href="@Url.Action("Videolesson", "Learning", new { Id = item.Id, language = ViewBag.language})">
+                <div class="col-xs-12 videotable">
+
+                    <div class="col-xs-8  videotleft">
+                        <div class="col-xs-12">
+                            <span class="minutet">@item.VideoXL.VideoLEMs.First().minute  минут</span>
+                            <div class="title">  @item.Name </div>
+                        </div>
+                        <div class="col-xs-12  statvideo ">
+                            <i class="fa  fa-thumbs-up " style="height:14px">@item.VideoXL.VideoLEMs.First().Likes</i>&nbsp;&nbsp;
+
+                            <i class="fa  fa-eye ">@item.VideoXL.VideoLEMs.First().Eye</i>
+
+                        </div>
+                    </div>
+
+                    <img src="@Url.Content(item.Iconimg)" class="col-xs-4 videotright" />
+
+                </div>
+            </a>
+        }
+        else
+        {
+            <a class="md-trigger  mrg-b-lg" data-modal="modal-1">
+
+
+                <div class="col-xs-12 videotable disable">
+
+                    <div class="col-xs-8  col-md-8 videotleft">
+                        <span class="minutet">@item.VideoXL.VideoLEMs.First().minute минут</span>
+                        <div class="title">  @item.Name</div>
+                        <div class="col-xs-12  statvideo">
+                            <i class="fa  fa-thumbs-up " style="height:14px">@item.VideoXL.VideoLEMs.First().Likes</i>&nbsp;&nbsp;
+
+                            <i class="fa  fa-eye "> @item.VideoXL.VideoLEMs.First().Eye</i>
+
+                        </div>
+                    </div>
+                    <img src="@Url.Content(item.Iconimg2)" class="col-xs-4 videotright" />
+
+
+
+                </div>
+            </a>
+
+        }
+    }
+</div>
+
+<div class="md-overlay"></div>
+
+
+
+
+
+
+

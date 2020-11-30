@@ -1,0 +1,62 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_Account.cshtml";
+
+}
+
+
+<div class="container" style="position:absolute">
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="login-box">
+                <div id="login-box-holder">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <header id="login-header">
+                                <div id="login-logo">
+                                    <img src="~/Content/img/logo.png" alt="" />
+                                </div>
+                            </header>
+                            <div id="login-box-inner">
+
+
+                                @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary(true)
+
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+
+                                        <input type="text" class="form-control" placeholder="Ваш номер телефона" name="UserName" minlength="15" id="phone-mask" required>
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-key"></i></span>
+
+                                        <input type="password" id="password" class="form-control" placeholder="пароль" name="Password" required>
+
+                                        <span style="cursor:pointer" class="input-group-addon" onclick="showpassword()"><i class="fa fa-eye"></i></span>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <button id="btnsuc" type="submit" class="btn btn-success col-xs-12">Войти</button>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

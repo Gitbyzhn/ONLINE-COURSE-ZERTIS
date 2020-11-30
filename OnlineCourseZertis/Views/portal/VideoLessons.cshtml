@@ -1,0 +1,286 @@
+﻿
+@{
+    
+    ViewBag.VideoLessons = "active";
+    Layout = "~/Views/Shared/_Layout_portal.cshtml";
+}
+
+
+
+
+
+@section data_table_css{
+    <link rel="stylesheet" href="~/Content/portal/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+
+}
+
+@model  IEnumerable<OnlineCourseZertis.Models.VideoL>
+
+
+
+
+    <section class="content-header">
+        <h1>
+            Таблица ВИДЕО УРОКИ
+        </h1>
+
+
+
+
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action("index","portal")"><i class="fa fa-dashboard"></i> Главная</a></li>
+
+            <li class="active">                      ВИДЕО УРОКИ</li>
+        </ol>
+
+        @*<span class="ChoosedNews" id="ChooseNewsTitle">ВИДЕО УРОК</span>*@
+
+        <div class="control_data_table">
+            <a href="@Url.Action("createvlessons","portal",new { language="ru"})" class="btn btn-success"> + <span class="fa fa-file-movie-o" style="font-size: 16px;"> Создать видеоурок</span> </a>
+
+            @*<a href="" class="btn btn-info right" margin-right:20px" id="OpenNews"> <span class="fa fa-sign-in" style="font-size: 16px;"> Открыть</span> </a>*@
+
+
+            <div class="dropdown" style="float:right">
+
+                <a class="dropdown-toggle btn btn-success" data-toggle="dropdown" href="#" aria-expanded="false">
+                    @ViewBag.language <span class="caret"></span>
+                </a>
+
+
+
+                <ul class="dropdown-menu" style="left: -111px;">
+                    <li><a href="@Url.Action("VideoLessons","portal",new { language="kz"})">Қазақ</a> </li>
+                    <li><a href="@Url.Action("VideoLessons","portal",new { language="ru"})">Руский</a></li>
+                    <li><a href="@Url.Action("VideoLessons","portal",new { language="uz"})">O'zbek</a></li>
+                    <li><a href="@Url.Action("VideoLessons","portal",new { language="kr"})">Кыргыз</a></li>
+                    <li><a href="@Url.Action("VideoLessons","portal",new { language="en"})">English</a></li>
+                    <li><a href="@Url.Action("VideoLessons","portal",new { language="tr"})">Türk</a></li>
+                </ul>
+
+            </div>
+
+            @*<li >
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="true">
+                        Dropdown <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                        <li role="presentation" class="divider"></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+                    </ul>
+                </li>*@
+        </div>
+
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+
+            <div class="col-xs-12">
+
+                <div class="box" style="margin-top:20px">
+
+                    <!-- /.box-header -->
+                    <div class="box-body">
+
+
+
+
+
+                        <table id="data_table" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+
+                                    <th>XId</th>
+                                    <th>Название</th>
+                                    <th>Модул Id</th>
+                                    <th>Язык</th>
+                                    <th>Изменить</th>
+                                    <th>Удалить</th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+
+                                @if (Model.Count() > 0)
+                                {
+
+                                    foreach (var item in Model)
+                                    {
+                                        <tr class="Video_@item.Id">
+
+
+                                            <td>@item.XId</td>
+                                            <td>
+                                                @item.Name
+
+                                                <input type="hidden" value="@item.Name" id="Title_@item.Id" />
+
+
+                                            </td>
+                                            <td>@item.ModulId</td>
+
+                                            <td>@item.language</td>
+
+
+                                            <td>
+
+
+
+                                                <a class="btn btn-social-icon btn-facebook" href="@Url.Action("editvlessons","portal",new { Id=item.Id,language= ViewBag.language })"><i class="fa fa-edit"></i></a>
+
+                                            </td>
+                                            <td>
+
+
+
+                                                <a class="btn btn-social-icon btn-google" data-toggle="modal" data-target="#modal-default" onclick="ChoosedVideo(@item.Id)" ><i class="fa fa-trash-o"></i></a>
+
+                                            </td>
+                                        </tr>
+
+                                    }
+
+                                }
+
+
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+
+                                    <th>XId</th>
+                                    <th>Название</th>
+                                    <th>Модул Id</th>
+                                    <th>Язык</th>
+                                    <th>Изменить</th>
+                                    <th>Удалить</th>
+
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <div class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Удалить видео</h4>
+                </div>
+                <div class="modal-body">
+               
+
+                        При удалении видео, если есть тест, тесты удаляются. В противном случае измените видео тестов !
+                
+                </div>
+                <div class="modal-footer">
+                   
+                    <button type="button" data-dismiss="modal" onclick="RemoveVideo()" class="btn btn-warning">Удалить</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+
+    <input type="hidden" id="ChoosedVideoId" />
+    <input type="hidden" id="AddVideoMsg" value="@ViewBag.AddVideoMsg" />
+ 
+
+    <script>
+
+        function OpenNews(id) {
+
+            var NewsTitle = $("#Title_" + id).val();
+            var ChooseNewsTitle = $("#ChooseNewsTitle");
+            var OpenNewshref = $("#OpenNews");
+            ChooseNewsTitle.html('');
+            ChooseNewsTitle.append("Id: " + id + " --- " + NewsTitle);
+            OpenNewshref.attr("href", "/portal/newsdetails/" + id);
+
+
+        }
+
+        function ChoosedVideo(Id) {
+         $("#ChoosedVideoId").val(Id);
+        }
+
+
+        function RemoveVideo() {
+
+            var Id = $("#ChoosedVideoId").val();
+
+            $.ajax({
+                type: 'POST',
+                url: "@Url.Action("removevlessons", "portal")",
+                data:{Id:Id},
+                success: function (data) {
+                    if (data == "success") {
+
+                        toastr["success"]("Ваш видео успешно удален !!!");
+                        $(".Video_" + Id).addClass("hidden");
+
+
+                    }
+                    else {
+                        toastr["warning"]("Произошла ошибка во время удаления !!!")
+                    }
+
+            
+                }
+            });
+
+
+        }
+
+    
+        
+          
+
+    </script>
+
+
+
+    @section data_table_js{
+        <!-- DataTables -->
+        <script src="~/Content/portal/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="~/Content/portal/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    }
+
+    @section data_table{
+
+        $('#data_table')
+        .addClass('nowrap')
+        .dataTable({
+
+        "language": {
+        "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Russian.json"
+        },
+
+
+        });
+    }
+
+
+   
+
+
+

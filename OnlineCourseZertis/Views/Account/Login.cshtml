@@ -1,0 +1,259 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_Account.cshtml";
+
+}
+
+
+@{
+
+
+
+
+
+    string language = "ru";
+
+    var ForgotPassword = "Забыли Пароль ?";
+    var Password = "Пароль";
+    var PhoneNumber = "Ваш номер телефона";
+    var BtnSend = "Войти";
+    var notbeaccountQ = "У вас нет аккаунта?";
+    var supporttech = "Техническая поддержка";
+    var register = "Регистрация";
+    var kzSelect = "";
+    var ruSelect = "";
+
+    language = ViewBag.language;
+
+    switch (language)
+    {
+
+
+        case "kz":
+            ForgotPassword = "Құпия сөзді ұмыттыңыз ба?";
+            PhoneNumber = "Телефон нөміріңіз";
+            Password = "Құпия сөз";
+            BtnSend = "Кіру";
+            notbeaccountQ = "Cіздің аккаунтыңыз жоқ па?";
+            supporttech = "Техникалық көмек";
+            register = "Тіркелу";
+            kzSelect = "selected";
+            break;
+        case "ru":
+            ruSelect = "selected";
+            break;
+
+    }
+
+
+        }
+
+
+<div class="container" style="position:absolute">
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="login-box">
+                <div id="login-box-holder">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <header id="login-header">
+                                <div id="login-logo">
+                                    <img src="~/Content/img/logo.png" alt="" />
+                                </div>
+                            </header>
+                            <div id="login-box-inner">
+
+
+                                @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary(true)
+
+
+                                    <input type="text" class="hidden" name="langugae" value="@ViewBag.language">
+
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+
+                                        <input type="text" class="form-control" placeholder="@PhoneNumber" name="UserName" id="phone-mask" minlength="15"  required>
+
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-key"></i></span>
+
+                                        <input type="password" id="password" class="form-control" placeholder="@Password" name="Password" maxlength="100" required>
+
+                                        <span style="cursor:pointer" class="input-group-addon" onclick="showpassword()"><i class="fa fa-eye"></i></span>
+                                    </div>
+                                        <div id="remember-me-wrapper">
+                                            <div class="row">
+
+
+                                                <div class="col-xs-12">
+
+                                                    <select class="form-control" name="Language" id="Language" style="width:150px">
+                                                            
+                                                            
+
+                                                            <option value="kz" @kzSelect>Қазақ</option>
+                                                            <option value="ru" @ruSelect>Руский</option>
+                                                            @*<option value="uz">O'zbek</option>
+                                                            <option value="kr">Кыргыз</option>
+                                                            <option value="en">English</option>
+                                                            <option value="tr">Türk</option>*@
+                                                    </select>
+
+
+
+                                                    <a href="@Url.Action("ForgotPassword","Account",new { language = ViewBag.language})" id="login-forget-link">
+                                                                @ForgotPassword
+                                                    </a>
+                                                </div>
+
+
+
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <button id="btnsuc" type="submit" class="btn btn-success col-xs-12">@BtnSend</button>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row" style="margin-top:18px">
+                                            <div class="col-xs-12">
+
+                                                <span id="notbeaccountQ">
+                                                    @notbeaccountQ
+                                                </span>
+                                                <a href="@Url.Action("Register","Account",new { language = ViewBag.language})" class="registerbtn" id="register" >@register</a>
+                                            </div>
+
+
+
+
+                                        </div>
+
+                                        <div class="row">
+
+                                            
+
+                                            <div class="techcontact col-xs-12 pad-l-r-0">
+
+                                                <span class="col-xs-12 title_techsup" id="supporttech">@supporttech</span>
+
+                                                @*<div class="phonecontact col-xs-12 col-md-6 pad-l-r-0">
+
+                                                    <i class="fa fa-phone"></i>
+                                                    +7-(778)-877-78-87
+                                                </div>*@
+
+
+                                                <div class="emailcontact col-xs-12 col-md-6 pad-l-r-0">
+
+                                                    <i class="fa fa-envelope-o">
+                                                    </i>
+
+                                                    info@zertis.kz
+
+                                                </div>
+
+
+                                            </div>
+
+
+                                        </div>
+
+
+
+
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    var arrLang = {
+
+
+        'kz': {
+            'phone': 'Телефон нөміріңіз',
+            'password': 'Құпия сөз',
+            'forgotpassword': 'Құпия сөзді ұмыттыңыз ба?',
+            'btnsuc': 'Кіру',
+            'notbeaccountQ': 'Cіздің аккаунтыңыз жоқ па?',
+            'register': 'Тіркелу',
+            'supporttech': 'Техникалық көмек',
+
+        },
+
+        'ru': {
+            'phone': 'Ваш номер телефона',
+            'password': 'Пароль',
+            'forgotpassword': 'Забыли пароль?',
+            'btnsuc': 'Войти',
+            'notbeaccountQ': 'У вас нет аккаунта?',
+            'register': 'Регистрация',
+            'supporttech': 'Техническая поддержка',
+
+        },
+
+        'uz': {
+            'email': 'Email pochta',
+            'password': 'parol',
+            'forgotpassword': 'Parolni unutdingizmi?',
+            'sign': 'Kirish',
+            'notbeaccountQ': 'У вас нет аккаунта?',
+            'Register': 'Регистрация',
+            'SupportTech': 'Техническая поддержка',
+
+        },
+
+        'kr': {
+            'email': 'Email почта',
+            'password': 'пароль',
+            'forgotpassword': 'Ачкыч сөздү унутуп калдынызбы?',
+            'sign': 'Кирүү'
+
+        },
+
+        'en': {
+            'email': 'Email',
+            'password': 'password',
+            'forgotpassword': 'Forgot password?',
+            'sign': 'Login'
+
+        },
+        'tr': {
+            'email': 'Email',
+            'password': 'şifre',
+            'forgotpassword': 'Parolanızı mı unuttunuz?',
+            'sign': 'Giriş Yap'
+
+        }
+
+    }
+
+
+        function showpassword() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+
+
+
+</script>

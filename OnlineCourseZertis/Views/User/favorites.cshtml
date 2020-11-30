@@ -1,0 +1,58 @@
+﻿@model  IEnumerable<OnlineCourseZertis.Models.VideoL>
+@{
+    Layout = "~/Views/Shared/_LayoutLearn.cshtml";
+}
+
+@{
+    var Title = "Избранное";
+    string language = "ru";
+    language = ViewBag.language;
+    switch (language)
+    {
+        case "kz":
+            Title = "Таңдаулы";
+            break;
+
+    }
+}
+
+
+<header class="main-box-header clearfix header-title-l">
+    <h2 style="font-weight:900 !important">@Title</h2>
+</header>
+
+
+
+<div class="container modul" id="Videos">
+    @foreach (var item in Model)
+    {
+
+        <a href="@Url.Action("Videolesson", "Learning", new { Id = item.Id, language = ViewBag.language })">
+            <div class="col-xs-12 videotable">
+
+                <div class="col-xs-8  videotleft">
+                    <div class="col-xs-12">
+                        <span class="minutet">@item.VideoXL.VideoLEMs.FirstOrDefault().minute минут</span>
+                        <div class="title">  @item.ShortT </div>
+                    </div>
+                    <div class="col-xs-12  statvideo ">
+                        <i class="fa  fa-thumbs-up " style="height:14px">@item.VideoXL.VideoLEMs.FirstOrDefault().Likes</i>&nbsp;&nbsp;
+
+                        <i class="fa  fa-eye "> @item.VideoXL.VideoLEMs.FirstOrDefault().Eye</i>
+
+                    </div>
+                </div>
+
+                <img src="@Url.Content(item.Iconimg)" class="col-xs-4 videotright" />
+
+            </div>
+        </a>
+
+    }
+</div>
+
+
+
+
+
+

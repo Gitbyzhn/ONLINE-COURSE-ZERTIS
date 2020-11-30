@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="298096f5078b4959b1c1d854dbc1ab56" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.AspNetRole" Width="1.5" PointX="13.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.AspNetUserClaim" Width="1.5" PointX="18.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.AspNetUserLogin" Width="1.5" PointX="18.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.AspNetUser" Width="1.5" PointX="16" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.ExpiredTimeVL" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.EyeV" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.Isbranni" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.JVLO" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.LessonVideoTime" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.LikeV" Width="1.5" PointX="3" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.Modul" Width="1.5" PointX="8.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.Modul_userLevel" Width="1.5" PointX="11" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.Modules_Property" Width="1.5" PointX="11" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.Premium" Width="1.5" PointX="0.75" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.Premium_OrderId" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.Quiz" Width="1.5" PointX="1.5" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.Quiz_B_User_Answer" Width="1.5" PointX="6" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.Quiz_C_User_Answer" Width="1.5" PointX="6" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.Quiz_Option" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.Test" Width="1.5" PointX="15.5" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.User_Premium" Width="1.5" PointX="3" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.User_Premium_Status" Width="1.5" PointX="5.25" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.UserInfo" Width="1.5" PointX="0.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.Users_Certificates" Width="1.5" PointX="3" PointY="30.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.ValitO" Width="1.5" PointX="3" PointY="33.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.VideoL" Width="1.5" PointX="13.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.VideoLEM" Width="1.5" PointX="13.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.VideoXL" Width="1.5" PointX="11" PointY="12.75" IsExpanded="true" />
+        <AssociationConnector Association="DB_Zertis_OCsModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Zertis_OCsModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Zertis_OCsModel.FK_EyeV_UserInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Zertis_OCsModel.FK_Isbranni_UserInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Zertis_OCsModel.FK_LessonVideoTime_UserInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Zertis_OCsModel.FK_LikeV_UserInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Zertis_OCsModel.FK_Modul_userLevel_Modul" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Zertis_OCsModel.FK_Modules_Property_Modul" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Zertis_OCsModel.FK_VideoL_Modul" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Zertis_OCsModel.FK_VideoXL_Modul" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Zertis_OCsModel.FK_User_Premium_Premium" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Zertis_OCsModel.FK_Quiz_B_User_Answer_UserInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Zertis_OCsModel.FK_User_AnswerOther_QuizA_UserInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Zertis_OCsModel.FK_Test_VideoL" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Zertis_OCsModel.FK_User_Premium_Status_User_Premium" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Zertis_OCsModel.FK_User_Premium_User_Premium" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Zertis_OCsModel.FK_Users_Certificates_UserInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Zertis_OCsModel.FK_ValitOS_UserInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Zertis_OCsModel.FK_VideoL_VideoXL" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Zertis_OCsModel.FK_VideoLEM_VideoXL" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Zertis_OCsModel.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.Quiz_Content" Width="1.5" PointX="3.75" PointY="4.5" />
+        <AssociationConnector Association="DB_Zertis_OCsModel.FK_Quiz_Content_Quiz" />
+        <AssociationConnector Association="DB_Zertis_OCsModel.FK_Quiz_B_User_Answer_Quiz_Content" />
+        <AssociationConnector Association="DB_Zertis_OCsModel.FK_Quiz_C_User_Answer_Quiz_Content" />
+        <AssociationConnector Association="DB_Zertis_OCsModel.FK_Quiz_Option_Quiz_Content" />
+        <EntityTypeShape EntityType="DB_Zertis_OCsModel.Quiz_A_User_Answer" Width="1.5" PointX="6" PointY="8.125" />
+        <AssociationConnector Association="DB_Zertis_OCsModel.FK_Quiz_A_User_Answer_Quiz_Content" />
+        <AssociationConnector Association="DB_Zertis_OCsModel.FK_Quiz_A_User_Answer_UserInfo" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

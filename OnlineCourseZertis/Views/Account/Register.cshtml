@@ -1,0 +1,191 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_Account.cshtml";
+
+}
+
+
+@{
+
+    string language = "ru";
+
+    var Name = "Имя";
+    var SureName = "Фамилия";
+
+    var PhoneNumber = "Ваш номер телефона";
+    var RegisterBtn = "Зарегистрироваться";
+    var SupportTech = "Техническая поддержка";
+    var Login = "Авторизоваться";
+    var AccounQ = "Уже есть аккаунт?";
+
+
+
+
+
+
+    language = ViewBag.language;
+
+    switch (language)
+    {
+
+
+        case "kz":
+            Name = "Аты";
+            SureName = "Тегі";
+            PhoneNumber = "Телефон нөмеріңіз";
+            RegisterBtn = "Тіркелу";
+            SupportTech = "Техникалық көмек";
+            Login = "Кіру";
+            AccounQ = "Аккаунтыңыз бар ма?";
+            break;
+    }
+
+
+}
+
+<div class="container" style="position:absolute">
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="login-box">
+                <div id="login-box-holder">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <header id="login-header">
+                                <div id="login-logo">
+                                    <img src="~/Content/img/logo.png" alt="" />
+                                </div>
+                            </header>
+                            <div id="login-box-inner">
+
+
+                                @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary(true)
+
+
+                                    <input type="text" class="hidden" name="langugae" value="@ViewBag.language">
+
+                                    <input  type="hidden"  name="transition" value="@ViewBag.transition">
+
+
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+
+                                        <input class="form-control" type="email" placeholder="Email" name="Email" required>
+
+                                    </div>
+
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+
+                                        <input class="form-control" type="text" placeholder="@Name" name="Name" required maxlength="100">
+
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+
+                                        <input class="form-control" type="text" placeholder="@SureName" name="SureName" required maxlength="100">
+
+                                    </div>
+
+
+
+                                   
+                                       
+                              
+
+
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+
+                                        <input type="text" class="form-control" placeholder="@PhoneNumber" name="PhoneNumber" minlength="15"  id="phone-mask" required>
+
+                                    
+
+
+                                    </div>
+
+                                    <br />
+
+
+
+                                    <input type="checkbox" class="custom-checkbox" id="agree" name="agree" value="yes" required>
+                                    <label for="agree">
+                                     
+                                    </label>
+
+                                    <span>
+                    
+                                        Я принимаю условия <a href="/Doc/Hydroponics_training_offer.htm" target="_blank">публичной оферты</a>
+                                        и даю своё согласие на передачу персональных данных согласно <a href="https://zertis.emdesell.ru/get-privacy-policy" target="_blank">политике конфиденциальности</a>.
+
+                                      
+                                        
+                                       
+                                    </span>
+                                    
+                            
+                                    <div class="row" style="margin-top:15px">
+                                        <div class="col-xs-12">
+                                            <button id="btnsuc" type="submit" class="btn btn-success col-xs-12">@RegisterBtn</button>
+                                        </div>
+                                    </div>
+
+
+                                        <div class="row" style="margin-top:18px">
+                                            <div class="col-xs-12">
+
+
+
+                                                @AccounQ
+
+                                                <a href="@Url.Action("Login","Account",new { language= ViewBag.language})" class="registerbtn"> @Login</a>
+                                            </div>
+
+
+
+
+                                        </div>
+                                        <div class="row">
+
+
+
+                                            <div class="techcontact col-xs-12 pad-l-r-0">
+
+                                                <span class="col-xs-12 title_techsup"> @SupportTech</span>
+
+                                                @*<div class="phonecontact col-xs-12 col-md-6 pad-l-r-0">
+
+                                                    <i class="fa fa-phone"></i>
+                                                    +7-(778)-877-78-87
+                                                </div>*@
+
+
+                                                <div class="emailcontact col-xs-12 col-md-6 pad-l-r-0">
+
+                                                    <i class="fa fa-envelope-o">
+                                                    </i>
+
+                                                    info@zertis.kz
+
+                                                </div>
+
+
+                                            </div>
+
+
+                                        </div>
+
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
